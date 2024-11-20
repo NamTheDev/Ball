@@ -1,0 +1,8 @@
+read:
+- .aider.conf.yml
+chat-mode: architect
+model: groq/llama-3.2-90b-text-preview
+yes-always: true
+dark-mode: true
+show-model-warnings: false
+chat-language: en
