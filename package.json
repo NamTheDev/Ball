@@ -9,9 +9,13 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "discord.js": "^14.16.3"
+    "discord.js": "^14.16.3",
+    "fs": "^0.0.1-security",
+    "groq-sdk": "^0.8.0"
   },
   "scripts": {
+    "deploy-commands": "bun deploy-commands.ts",
+    "dev": "bun --watch .",
     "start": "bun .",
     "setup": "bun setup.ts"
   }

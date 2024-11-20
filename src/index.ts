@@ -1,20 +1,21 @@
-import { ActivityType, Client } from "discord.js";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
 import config from "../config";
+import { readdirSync } from "fs";
+import type { ApplicationCommandStructure } from "./types";
 
 const client = new Client({
-    intents: [
-        "Guilds",
-        "GuildMessages",
-        "MessageContent",
-        "GuildMembers",
-        "GuildIntegrations",
-        "DirectMessages"
-    ]
+    intents: Object.keys(GatewayIntentBits).map((key) => GatewayIntentBits[key as keyof typeof GatewayIntentBits])
 })
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user?.tag}!`)
-    client.user?.setActivity('with botmanager', { type: ActivityType.Watching, state: 'you' });
-})
+const commands = readdirSync('src/commands');
+const commandCollection = new Collection<string, ApplicationCommandStructure>();
+commands.forEach(
+    (file) => (commandCollection.set(file.split('.')[0], require('./commands/' + file).default))
+);
 
-client.login(config.DISCORD_BOT_TOKEN);
+export { client, commandCollection };
+
+const events = readdirSync('src/events');
+events.forEach((file) => require('./events/' + file));
+
+client.login(config.DISCORD_TOKEN);
