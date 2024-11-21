@@ -8,5 +8,27 @@ export default {
     GROQ_MODEL: 'llama-3.2-90b-text-preview',
 
     //Note system
-    MAX_NOTES: 5
+    MAX_NOTES: 5,
+
+    //Errors
+    ERRORS: {
+        CONTENT_VIOLATION: {
+            REASONS: [
+                "content violation",
+                "harmful",
+                "disrespectful",
+                "inhumane",
+                "untolerated",
+                "unallowed",
+                "illegal",
+                "abusive",
+                "discriminative",
+                "offensive",
+                "toxic",
+                "advertisement"
+            ],
+            ADDITIONAL_NOTE: "Advertisement in term of showing off their skills are allowed.",
+            CODE: "ERROR_CONTENT_VIOLATION_(001)"
+        }
+    }
 }

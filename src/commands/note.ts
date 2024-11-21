@@ -130,7 +130,6 @@ const command: ApplicationCommandStructure = {
     },
 
     async autocomplete(interaction) {
-        const subcommand = interaction.options.getFocused(true);
         const noteSystem = new NoteSystem(interaction.user.id);
         const notes = await noteSystem.listNotes();
         interaction.respond(notes.map(note => ({ name: note, value: note })));

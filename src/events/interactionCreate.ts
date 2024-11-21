@@ -12,7 +12,6 @@ client.on('interactionCreate', async (interaction) => {
             await interaction.followUp({
                 embeds: [
                     {
-                        title: 'Error',
                         color: Colors.Red,
                         description: `\`\`\`${error}\`\`\``
                     }
