@@ -14,6 +14,7 @@ export class NoteSystem {
 
     constructor(userID: string) {
         this.userID = userID;
+        if (!existsSync(this.databasePath)) mkdirSync(this.databasePath);
     }
 
     public async createNote(title: string, content: string) {
@@ -21,10 +22,7 @@ export class NoteSystem {
         if (limitReached) throw Error("You have reached the maximum number of notes.");
         const filePath = this.filePath(title);
         if (existsSync(filePath)) throw Error("Note already exists");
-        else if (!existsSync(this.databasePath)) {
-            mkdirSync(this.databasePath)
-            writeFileSync(filePath, content);
-        } else writeFileSync(filePath, content);
+        writeFileSync(filePath, content);
         return `Created note "${title}".`
     }
 
@@ -32,32 +30,34 @@ export class NoteSystem {
         const filePath = this.filePath(title);
         const newFilePath = this.filePath(newTitle);
         if (!existsSync(filePath)) throw Error("Note does not exist");
-        else renameSync(filePath, newFilePath);
+        renameSync(filePath, newFilePath);
         return `Edited note's title "${title}".`;
     }
 
     public async editNoteContent(title: string, content: string) {
         const filePath = this.filePath(title);
         if (!existsSync(filePath)) throw Error("Note does not exist");
-        else writeFileSync(filePath, content);
+        writeFileSync(filePath, content);
         return `Edited note's content "${title}".`;
     }
 
     public async viewNote(title: string): Promise<string> {
         const filePath = this.filePath(title);
         if (!existsSync(filePath)) throw Error("Note does not exist");
-        else return readFileSync(filePath, 'utf-8');
+        return readFileSync(filePath, 'utf-8');
     }
 
     public async deleteNote(title: string) {
         const filePath = this.filePath(title);
         if (!existsSync(filePath)) throw Error("Note does not exist");
-        else unlinkSync(filePath);
+        unlinkSync(filePath);
         return `Deleted note "${title}".`;
     }
 
     public async listNotes() {
-        const notes = readdirSync(this.databasePath).map((title) => title.split('.')[0]);
+        const { databasePath } = this
+        if (!existsSync(databasePath)) mkdirSync(databasePath);
+        const notes = readdirSync(databasePath).map((title) => title.split('.')[0]);
         return notes;
     }
 

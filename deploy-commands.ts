@@ -1,9 +1,7 @@
 import { REST, Routes } from 'discord.js';
 import { readdirSync } from 'fs';
-
-// Use environment variables directly
-const clientId = process.env.DISCORD_APPLICATION_ID;
-const token = process.env.DISCORD_TOKEN;
+import config from './config';
+const { DISCORD_APPLICATION_ID: clientId, DISCORD_BOT_TOKEN: token } = config;
 
 // Validate required environment variables
 if (!clientId || !token) {

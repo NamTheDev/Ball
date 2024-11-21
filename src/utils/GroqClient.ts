@@ -6,7 +6,7 @@ export class GroqClient {
     private groq: Groq
 
     constructor() {
-        const groq = new Groq({ apiKey: config.GROQ_KEY });
+        const groq = new Groq({ apiKey: config.GROQ_API_KEY });
         this.groq = groq
     }
 

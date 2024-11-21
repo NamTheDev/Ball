@@ -18,4 +18,4 @@ export { client, commandCollection };
 const events = readdirSync('src/events');
 events.forEach((file) => require('./events/' + file));
 
-client.login(config.DISCORD_TOKEN);
+client.login(config.DISCORD_BOT_TOKEN);
