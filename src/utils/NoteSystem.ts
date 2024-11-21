@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "fs";
 import config from "../../config";
+import { chat } from "./GroqClient";
 
 export class NoteSystem {
     private userID: string;
@@ -41,10 +42,21 @@ export class NoteSystem {
         return `Edited note's content "${title}".`;
     }
 
-    public async viewNote(title: string): Promise<string> {
+    public async viewNote(title: string, showMode?: boolean): Promise<string> {
         const filePath = this.filePath(title);
         if (!existsSync(filePath)) throw Error("Note does not exist");
-        return readFileSync(filePath, 'utf-8');
+        const content = readFileSync(filePath, 'utf-8');
+        if (showMode) {
+            const [{
+                message: {
+                    content: violation
+                }
+            }] = await chat(content, 'Is this content inhumane? Must include word true into response. This reply is toward user.');
+            if (
+                violation?.toLowerCase().includes('true')
+            ) throw Error(violation);
+        }
+        return content;
     }
 
     public async deleteNote(title: string) {

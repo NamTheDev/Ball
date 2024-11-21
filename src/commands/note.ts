@@ -94,6 +94,20 @@ const command: ApplicationCommandStructure = {
                 ]
             },
             {
+                name: 'show',
+                description: 'show a note',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'title',
+                        description: 'title of the note',
+                        type: ApplicationCommandOptionType.String,
+                        required: true,
+                        autocomplete: true
+                    }
+                ]
+            },
+            {
                 name: 'delete',
                 description: 'delete a note',
                 type: ApplicationCommandOptionType.Subcommand,
@@ -142,6 +156,25 @@ const command: ApplicationCommandStructure = {
             case 'content':
                 if (title && content)
                     response = await noteSystem.editNoteContent(title, content);
+                break;
+            case 'show':
+                if (title)
+                    response = await noteSystem.viewNote(title, true);
+                if (interaction.channel?.isSendable())
+                    await interaction.channel.send({
+                        embeds: [
+                            {
+                                author: {
+                                    name: interaction.user.username,
+                                    icon_url: interaction.user.displayAvatarURL()
+                                },
+                                title: `Note - "${title}"`,
+                                color: Colors.White,
+                                description: response
+                            }
+                        ]
+                    })
+                response = 'Note displayed publicly.';
                 break;
             case 'view':
                 if (title)
