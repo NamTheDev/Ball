@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "fs";
 import config from "../../config";
-import { chat } from "./GroqClient";
+import Moderation from "./Moderation";
 
 export class NoteSystem {
     private userID: string;
@@ -10,7 +10,6 @@ export class NoteSystem {
     };
     private filePath(title: string): string {
         return `${this.databasePath}${title}.txt`;
-
     }
 
     constructor(userID: string) {
@@ -21,15 +20,14 @@ export class NoteSystem {
     public async createNote(title: string, content: string) {
         const limitReached = this.checkLimits();
         if (limitReached) throw Error("You have reached the maximum number of notes.");
-        
-        const urlRegex = /https?:\/\/[^\s]+/g;
-        const urls = content.match(urlRegex);
-        if(urls && urls.length > 0) throw Error("Links are not allowed in notes.");
+
+        const urlsDetected = this.checkURLs(title, content);
+        if (urlsDetected) throw Error("Links are not allowed in notes.");
 
         const filePath = this.filePath(title);
         if (existsSync(filePath)) throw Error("Note already exists");
         writeFileSync(filePath, content);
-        
+
         return `Created note "${title}".`
     }
 
@@ -52,24 +50,7 @@ export class NoteSystem {
         const filePath = this.filePath(title);
         if (!existsSync(filePath)) throw Error("Note does not exist");
         const content = readFileSync(filePath, 'utf-8');
-        if (showMode) {
-            const reasons = config.ERRORS.CONTENT_VIOLATION.REASONS;
-            const [{
-                message: {
-                    content: violation
-                }
-            }] = await chat(`title: ${title}\ncontent: ${content}`,
-                `See if this content violate any of these reasons: ${reasons.join(', ')}` +
-                'Must include reasons in the response.' +
-                'Use only ABC characters and or comma and dot.' +
-                'Response must be as short as possible (serve like an error message).' +
-                'Additional note: ' + config.ERRORS.CONTENT_VIOLATION.ADDITIONAL_NOTE
-            );
-            for (const reason of reasons) {
-                if (violation?.toLowerCase().includes(reason))
-                    throw Error(violation + `\n\nCode: ${config.ERRORS.CONTENT_VIOLATION.CODE}`);
-            }
-        }
+        if (showMode) Moderation.validateContent(`Title: "${title}" - content:\n"${content}"`);
         return content;
     }
 
@@ -91,5 +72,13 @@ export class NoteSystem {
         if (!existsSync(this.databasePath)) return;
         const currentNoteCount = readdirSync(this.databasePath).length;
         if (currentNoteCount >= this.maxNotes) return true;
+    }
+
+    private checkURLs(title: string, content: string) {
+        const urlRegex = /https?:\/\/[^\s]+/g;
+        const titleUrls = title.match(urlRegex) || [];
+        const contentUrls = content.match(urlRegex) || [];
+
+        return !!(titleUrls?.length + contentUrls?.length); // combines both arrays' lengths and converts to boolean
     }
 }

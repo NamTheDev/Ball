@@ -1,7 +1,8 @@
 import { ApplicationCommandOptionType, Colors, type APIEmbed } from "discord.js";
 import type { ApplicationCommandStructure } from "../types";
 import config from "../../config";
-import { chat } from "../utils/GroqClient";
+import GroqClient from "../utils/GroqClient";
+import Moderation from "../utils/Moderation";
 
 const command: ApplicationCommandStructure = {
     data: {
@@ -22,40 +23,46 @@ const command: ApplicationCommandStructure = {
             }
         ]
     },
-    execute: async (interaction, client) => {
+    async autocomplete(interaction) {
+        const models = config.OTHER_GROQ_MODELS;
+        interaction.respond(models.map(model => ({ name: model, value: model })));
+    },
+    async execute(interaction) {
         const message = interaction.options.getString('message', true);
         const model = interaction.options.getString('model');
 
-        const [{ message: { content } }] = await chat(message,
+        await Moderation.validateContent(message);
+
+        const [{ message: { content } }] = await GroqClient.chat(message,
             'You are an AI assistant.\n' +
             'You can only provide small, simple and quick tasks.\n' +
             'You are limited to few hundred characters length.\n',
-            model || undefined); // model || config.GROQ_MODEL
+            model || undefined);
+            
         if (!content) throw Error("No response from the bot.");
 
-        function extractCodeBlocks(input: string): { embeds: APIEmbed[], modifiedString: string } {
-            const codeBlockRegex = /```[\s\S]*?```/g;
-            const codeBlocks = input.match(codeBlockRegex) || [];
-
-            const embeds = []
-
-            for (const index in codeBlocks) {
-                const codeBlockIndex = Number(index) + 1
-                input = input.replace(codeBlocks[index], `\`REFERENCE: CODE_BLOCK_${codeBlockIndex}\``);
-                embeds.push({
-                    title: `CODE_BLOCK_${codeBlockIndex}`,
-                    description: codeBlocks[index],
-                    color: Colors.White
-                })
-            }
-            const modifiedString = input.trim();
-            return { embeds, modifiedString };
-        }
-
         const { embeds, modifiedString } = extractCodeBlocks(content);
-
         await interaction.followUp({ content: modifiedString, embeds });
     }
+}
+
+function extractCodeBlocks(input: string): { embeds: APIEmbed[], modifiedString: string } {
+    const codeBlockRegex = /```[\s\S]*?```/g;
+    const codeBlocks = input.match(codeBlockRegex) || [];
+
+    const embeds = []
+
+    for (const index in codeBlocks) {
+        const codeBlockIndex = Number(index) + 1
+        input = input.replace(codeBlocks[index], `\`REFERENCE: CODE_BLOCK_${codeBlockIndex}\``);
+        embeds.push({
+            title: `CODE_BLOCK_${codeBlockIndex}`,
+            description: codeBlocks[index],
+            color: Colors.White
+        })
+    }
+    const modifiedString = input.trim();
+    return { embeds, modifiedString };
 }
 
 export default command;
