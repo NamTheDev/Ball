@@ -14,7 +14,7 @@
     "groq-sdk": "^0.8.0"
   },
   "scripts": {
-    "deploy-commands": "bun deploy-commands.ts",
+    "dep-cmd": "bun deploy-commands.ts",
     "dev": "bun --watch .",
     "start": "bun .",
     "setup": "bun setup.ts"

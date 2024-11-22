@@ -10,8 +10,8 @@ const command: ApplicationCommandStructure = {
         const WebsocketPing = client.ws.ping;
         await interaction.followUp(
             'Pong!'
-            + '\n> **Message latency**:' + MessageLatency + 'ms'
-            + '\n> **API latency**:' + WebsocketPing + 'ms'
+            + '\n> **Message latency**: ' + MessageLatency + 'ms'
+            + '\n> **API latency**: ' + WebsocketPing + 'ms'
         );
     }
 }
