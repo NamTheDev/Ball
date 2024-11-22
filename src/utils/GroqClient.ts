@@ -4,9 +4,9 @@ import config from "../../config";
 
 const groq = new Groq({ apiKey: config.GROQ_API_KEY });
 
-export async function chat(message: string, systemMessage: string) {
+export async function chat(message: string, systemMessage: string, otherModel?: string) {
     const response = await groq.chat.completions.create({
-        model: config.GROQ_MODEL,
+        model: otherModel || config.GROQ_MODEL,
         messages: [{
             role: 'user',
             content: message

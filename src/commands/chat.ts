@@ -29,8 +29,8 @@ const command: ApplicationCommandStructure = {
         const [{ message: { content } }] = await chat(message,
             'You are an AI assistant.\n' +
             'You can only provide small, simple and quick tasks.\n' +
-            'You are limited to few hundred characters length.\n'
-        ); // model || config.GROQ_MODEL
+            'You are limited to few hundred characters length.\n',
+            model || undefined); // model || config.GROQ_MODEL
         if (!content) throw Error("No response from the bot.");
 
         function extractCodeBlocks(input: string): { embeds: APIEmbed[], modifiedString: string } {
