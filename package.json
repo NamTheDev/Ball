@@ -1,5 +1,5 @@
 {
-  "name": "botmanager",
+  "name": "ball",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
