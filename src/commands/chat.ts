@@ -34,11 +34,14 @@ const command: ChatInputApplicationCommandStructure = {
         await Moderation.validateContent(message);
 
         const [{ message: { content } }] = await GroqClient.chat(message,
-            'You are an AI assistant.\n' +
-            'You can only provide small, simple and quick tasks.\n' +
-            'You are limited to few hundred characters length.\n',
-            model || undefined);
-            
+            {
+                systemMessage:
+                    'You are an AI assistant.\n' +
+                    'You can only provide small, simple and quick tasks.\n' +
+                    'You are limited to few hundred characters length.\n',
+                otherModel: model || undefined
+            });
+
         if (!content) throw Error("No response from the bot.");
 
         const { embeds, modifiedString } = extractCodeBlocks(content);

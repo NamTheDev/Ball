@@ -36,10 +36,6 @@ const command: ChatInputApplicationCommandStructure = {
         const defaultSystemMessage = 'You are a chatbot who will help user to know more about the bot. Your answer should be short.\nReference:';
 
         const references = {
-            get QuestionAndAnswer() {
-                return readFileSync('markdown/QuestionAndAnswer.md', 'utf-8');
-            },
-
             get file() {
                 return readFileSync(reference || 'README.md', 'utf-8');
             },
@@ -62,35 +58,35 @@ const command: ChatInputApplicationCommandStructure = {
             }
         }
 
-        switch (type) {
-            case "COMMAND":
-                if (reference === "LIST")
-                    response = await GroqClient.chat(
-                        question,
-                        `${defaultSystemMessage} ${references.commandList}).join('\n')}`
-                    ).then(res => res[0].message.content) || '';
-                else
-                    response = await GroqClient.chat(
-                        question,
-                        `${defaultSystemMessage} ${references.command}\n\n` +
-                        `Command usage: /command <subcommand> OR <option>:<value> <subcommand's option>:<value>`
-                    ).then(res => res[0].message.content) || '';
-                break;
-            case "FILE":
-                response = await GroqClient.chat(
-                    question, `${defaultSystemMessage} ${references.file}`
-                ).then(res => res[0].message.content) || '';
-                break;
-            default:
+        async function COMMAND() {
+            if (reference === "LIST")
                 response = await GroqClient.chat(
                     question,
-                    `${defaultSystemMessage} ${references.QuestionAndAnswer}`
+                    { systemMessage: `${defaultSystemMessage} ${references.commandList}).join('\n')}` }
                 ).then(res => res[0].message.content) || '';
-                break;
+            else
+                response = await GroqClient.chat(
+                    question,
+                    {
+                        systemMessage:
+                            `${defaultSystemMessage} ${references.command}\n\n` +
+                            `Command usage: /command <subcommand> OR <option>:<value> <subcommand's option>:<value>`
+                    }
+                ).then(res => res[0].message.content) || '';
         }
 
-        console.log(response);
+        async function FILE() {
+            response = await GroqClient.chat(
+                question, { systemMessage: `${defaultSystemMessage} ${references.file}` }
+            ).then(res => res[0].message.content) || '';
+        }
 
+        switch (type) {
+            case "COMMAND": await COMMAND(); break;
+            case "FILE": await FILE(); break;
+            default: throw Error("Invalid question.");
+        }
+        
         await interaction.followUp({ content: response });
     }
 }

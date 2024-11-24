@@ -5,9 +5,13 @@ import config from "../../config";
 const groq = new Groq({ apiKey: config.GROQ_API_KEY });
 
 const GroqClient = {
-  async chat(message: string, systemMessage: string, otherModel?: string) {
+  async chat(message: string, options: { systemMessage: string, otherModel?: string, json_object?: boolean }) {
+    const { systemMessage, otherModel, json_object } = options;
     const response = await groq.chat.completions.create({
-        model: otherModel || config.GROQ_MODEL,
+      response_format: {
+        type: json_object ? 'json_object' : 'text'
+      },
+      model: otherModel || config.GROQ_MODEL,
       messages: [
         {
           role: 'user',
@@ -15,7 +19,7 @@ const GroqClient = {
         }, {
           role: 'system',
           content: systemMessage
-}
+        }
       ]
     });
     return response.choices;
