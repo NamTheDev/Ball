@@ -4,7 +4,7 @@ Ball is a versatile Discord bot designed to enhance your server experience with 
 
 ## Information
 
-- **Provider:** Groq/LLama-3.2-90b-text-preview
+- **Provider:** Groq
 - **Open Source & Free:** Ball is completely open source and free to use. There are no plans or subscriptions required.
 - **Source Code:** [GitHub Repository](https://github.com/NamTheDev/Ball)
 - **Credit:** Developed by [Nam](https://namthedev.github.io/profile/)

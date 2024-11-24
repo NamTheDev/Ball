@@ -1,14 +1,14 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 import config from "../config";
 import { readdirSync } from "fs";
-import type { ApplicationCommandStructure } from "./types";
+import type { ChatInputApplicationCommandStructure } from "./types";
 
 const client = new Client({
     intents: Object.keys(GatewayIntentBits).map((key) => GatewayIntentBits[key as keyof typeof GatewayIntentBits])
 })
 
 const commands = readdirSync('src/commands');
-const commandCollection = new Collection<string, ApplicationCommandStructure>();
+const commandCollection = new Collection<string, ChatInputApplicationCommandStructure>();
 commands.forEach(
     (file) => (commandCollection.set(file.split('.')[0], require('./commands/' + file).default))
 );

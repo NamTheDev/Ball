@@ -1,10 +1,10 @@
 import { ApplicationCommandOptionType, Colors, type APIEmbed } from "discord.js";
-import type { ApplicationCommandStructure } from "../types";
+import type { ChatInputApplicationCommandStructure } from "../types";
 import config from "../../config";
 import GroqClient from "../utils/GroqClient";
 import Moderation from "../utils/Moderation";
 
-const command: ApplicationCommandStructure = {
+const command: ChatInputApplicationCommandStructure = {
     data: {
         name: 'chat',
         description: 'chat with the bot',

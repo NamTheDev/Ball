@@ -1,8 +1,8 @@
 import { ApplicationCommandOptionType, Colors, MessagePayload, type InteractionReplyOptions } from "discord.js";
-import type { ApplicationCommandStructure } from "../types";
+import type { ChatInputApplicationCommandStructure } from "../types";
 import { NoteSystem } from "../utils/NoteSystem";
 
-const command: ApplicationCommandStructure = {
+const command: ChatInputApplicationCommandStructure = {
     data: {
         name: 'note',
         description: 'manage your notes using our note system',

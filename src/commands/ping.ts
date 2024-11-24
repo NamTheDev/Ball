@@ -1,6 +1,6 @@
-import type { ApplicationCommandStructure } from '../types';
+import type { ChatInputApplicationCommandStructure } from '../types';
 
-const command: ApplicationCommandStructure = {
+const command: ChatInputApplicationCommandStructure = {
     data: {
         name: 'ping',
         description: 'Replies with Pong!'

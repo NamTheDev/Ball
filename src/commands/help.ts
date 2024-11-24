@@ -1,17 +1,18 @@
 import { readFileSync } from "fs";
 import config from "../../config";
-import type { ApplicationCommandStructure } from "../types";
+import type { ChatInputApplicationCommandStructure } from "../types";
 import GroqClient from "../utils/GroqClient";
+import { ApplicationCommandOptionType } from "discord.js";
 
-const command: ApplicationCommandStructure = {
+const command: ChatInputApplicationCommandStructure = {
     data: {
         name: 'help',
-        description: 'understand how to use the bot',
+        description: 'ask about the bot',
         options: [
             {
                 name: 'question',
                 description: 'your question to the bot',
-                type: 3,
+                type: ApplicationCommandOptionType.String,
                 required: true,
                 autocomplete: true
             }
@@ -32,31 +33,63 @@ const command: ApplicationCommandStructure = {
 
         let response = '';
 
-        const defaultSystemMessage = 'You are a question and answer chatbot.\nReference:';
+        const defaultSystemMessage = 'You are a chatbot who will help user to know more about the bot.\nReference:';
+
+        const references = {
+            get QuestionAndAnswer() {
+                return readFileSync('markdown/QuestionAndAnswer.md', 'utf-8');
+            },
+
+            get file() {
+                return readFileSync(reference || 'README.md', 'utf-8');
+            },
+
+            get commandList() {
+                return commands.map(command => {
+                    const { name, description } = command[1].data;
+                    return JSON.stringify({
+                        name,
+                        description,
+                        prefix: '/'
+                    }, null, 2)
+                })
+            },
+
+            get command() {
+                return JSON.stringify(
+                    commandCollection.get(reference.toLowerCase())?.data, null, 2
+                )
+            }
+        }
 
         switch (type) {
             case "COMMAND":
                 if (reference === "LIST")
                     response = await GroqClient.chat(
                         question,
-                        `${defaultSystemMessage} ${commands.map(command =>
-                            JSON.stringify(command[1].data, null, 2)
-                        ).join('\n')}`
+                        `${defaultSystemMessage} ${references.commandList}).join('\n')}`
                     ).then(res => res[0].message.content) || '';
                 else
                     response = await GroqClient.chat(
                         question,
-                        `${defaultSystemMessage} ${JSON.stringify(
-                            commandCollection.get(reference.toLowerCase()), null, 2)}`
+                        `${defaultSystemMessage} ${references.command}\n\n` +
+                        `Command usage: /command <subcommand> OR <option>:<value> <subcommand's option>:<value>`
                     ).then(res => res[0].message.content) || '';
                 break;
             case "FILE":
-                const file = readFileSync(reference, 'utf-8');
                 response = await GroqClient.chat(
-                    question, `${defaultSystemMessage} ${file}`
+                    question, `${defaultSystemMessage} ${references.file}`
+                ).then(res => res[0].message.content) || '';
+                break;
+            default:
+                response = await GroqClient.chat(
+                    question,
+                    `${defaultSystemMessage} ${references.QuestionAndAnswer}`
                 ).then(res => res[0].message.content) || '';
                 break;
         }
+
+        if (!response) throw Error("Question is not valid.");
 
         await interaction.followUp({ content: response });
     }
