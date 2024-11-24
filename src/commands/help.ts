@@ -33,7 +33,7 @@ const command: ChatInputApplicationCommandStructure = {
 
         let response = '';
 
-        const defaultSystemMessage = 'You are a chatbot who will help user to know more about the bot.\nReference:';
+        const defaultSystemMessage = 'You are a chatbot who will help user to know more about the bot. Your answer should be short.\nReference:';
 
         const references = {
             get QuestionAndAnswer() {
@@ -89,7 +89,7 @@ const command: ChatInputApplicationCommandStructure = {
                 break;
         }
 
-        if (!response) throw Error("Question is not valid.");
+        console.log(response);
 
         await interaction.followUp({ content: response });
     }
