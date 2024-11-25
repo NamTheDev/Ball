@@ -55,16 +55,11 @@ const command: ChatInputApplicationCommandStructure = {
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                     {
-                        name: 'name',
-                        description: 'set your RPG name',
+                        name: 'character',
+                        description: 'choose your RPG character',
                         type: ApplicationCommandOptionType.String,
-                        required: true
-                    },
-                    {
-                        name: 'age',
-                        description: 'set your RPG age',
-                        type: ApplicationCommandOptionType.Integer,
-                        required: true
+                        required: true,
+                        autocomplete: true
                     },
                     {
                         name: 'appearance',
@@ -76,13 +71,6 @@ const command: ChatInputApplicationCommandStructure = {
                         name: 'backstory',
                         description: 'tell a bit about your RPG backstory',
                         type: ApplicationCommandOptionType.String
-                    },
-                    {
-                        name: 'character',
-                        description: 'choose your RPG character',
-                        type: ApplicationCommandOptionType.String,
-                        required: true,
-                        autocomplete: true
                     }
                 ]
             },
