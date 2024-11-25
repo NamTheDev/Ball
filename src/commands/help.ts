@@ -21,35 +21,30 @@ const command: ChatInputApplicationCommandStructure = {
     },
 
     async autocomplete(interaction) {
+        const maxAutocompleteChoices = 24;
         const focusedValue = interaction.options.getFocused();
+
         if (focusedValue) {
-            const questions = config.HELP.QUESTIONS
-            const filteredQuestions = questions
-                .filter(
-                    ({ QUESTION }) =>
-                        QUESTION.toLowerCase().includes(
-                            focusedValue.toLowerCase()
-                        )
-                )
-                .slice(0, 24)
-                .map(
-                    ({ QUESTION, REFERENCE }) =>
-                        ({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` })
-                );
+            const filteredQuestions = config.HELP.QUESTIONS
+                .filter(({ QUESTION }) => QUESTION.toLowerCase().includes(focusedValue.toLowerCase()))
+                .slice(0, maxAutocompleteChoices)
+                .map(({ QUESTION, REFERENCE }) => ({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` }));
             return interaction.respond(filteredQuestions);
         }
-        const questions: { name: string, value: string }[] = [];
-        while (questions.length < 24) {
-            const randomNumber = NumberGen.getRandomNumberInRange(0, config.HELP.QUESTIONS.length - 1);
-            const question = config.HELP.QUESTIONS[randomNumber].QUESTION;
-            const reference = config.HELP.QUESTIONS[randomNumber].REFERENCE;
 
-            if (questions.find(({ name }) => name === question)) continue;
-            questions.push({
-                name: question,
-                value: `${question}_${reference}`
-            });
+        const uniqueQuestions = new Set();
+        const questions = [];
+
+        while (questions.length < maxAutocompleteChoices) {
+            const randomIndex = NumberGen.getRandomNumberInRange(0, config.HELP.QUESTIONS.length - 1);
+            const { QUESTION, REFERENCE } = config.HELP.QUESTIONS[randomIndex];
+
+            if (!uniqueQuestions.has(QUESTION)) {
+                uniqueQuestions.add(QUESTION);
+                questions.push({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` });
+            }
         }
+
         interaction.respond(questions);
     },
 
