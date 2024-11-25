@@ -168,7 +168,7 @@ export default {
                 REFERENCE: "FILE_README.MD"
             },
             {
-                QUESTION: "Can I customize the bot?",
+                QUESTION: "Can I clone the bot?",
                 REFERENCE: "FILE_README.MD"
             },
             {
