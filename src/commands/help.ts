@@ -3,7 +3,6 @@ import config from "../../config";
 import type { ChatInputApplicationCommandStructure } from "../types";
 import GroqClient from "../utils/GroqClient";
 import { ApplicationCommandOptionType } from "discord.js";
-import NumberGen from "../utils/NumberGen";
 
 const command: ChatInputApplicationCommandStructure = {
     data: {
@@ -21,28 +20,24 @@ const command: ChatInputApplicationCommandStructure = {
     },
 
     async autocomplete(interaction) {
-        const maxAutocompleteChoices = 24;
         const focusedValue = interaction.options.getFocused();
+        const maxAutocompleteChoices = 24;
+
+        const questions = config.HELP.QUESTIONS
+            .map(({ QUESTION, REFERENCE }) => `${QUESTION}_${REFERENCE}`)
+            .slice(0, maxAutocompleteChoices)
+            .map(question => ({ name: question, value: question }));
 
         if (focusedValue) {
-            const filteredQuestions = config.HELP.QUESTIONS
-                .filter(({ QUESTION }) => QUESTION.toLowerCase().includes(focusedValue.toLowerCase()))
-                .slice(0, maxAutocompleteChoices)
-                .map(({ QUESTION, REFERENCE }) => ({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` }));
+            const filteredQuestions = questions
+                .filter(
+                    question =>
+                        question.name.toLowerCase()
+                            .startsWith(
+                                focusedValue.toLowerCase()
+                            )
+                );
             return interaction.respond(filteredQuestions);
-        }
-
-        const uniqueQuestions = new Set();
-        const questions = [];
-
-        while (questions.length < maxAutocompleteChoices) {
-            const randomIndex = NumberGen.getRandomNumberInRange(0, config.HELP.QUESTIONS.length - 1);
-            const { QUESTION, REFERENCE } = config.HELP.QUESTIONS[randomIndex];
-
-            if (!uniqueQuestions.has(QUESTION)) {
-                uniqueQuestions.add(QUESTION);
-                questions.push({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` });
-            }
         }
 
         interaction.respond(questions);
