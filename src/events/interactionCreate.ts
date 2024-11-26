@@ -21,8 +21,8 @@ async function handleChatInputCommand(interaction: ChatInputCommandInteraction, 
 
 async function handleAutocomplete(interaction: AutocompleteInteraction, client: Client) {
     const command = commandCollection.get(interaction.commandName);
-    if (command)
-        if (command.autocomplete) await command.autocomplete(interaction, client);
+    if (command && command.autocomplete)
+        await command.autocomplete(interaction, client);
 }
 
 client.on('interactionCreate', async (interaction) => {

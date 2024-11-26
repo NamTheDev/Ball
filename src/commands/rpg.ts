@@ -1,13 +1,79 @@
 import { ApplicationCommandOptionType } from "discord.js";
 import type { ChatInputApplicationCommandStructure } from "../types";
-import RPG from "../utils/RPG";
-
+import RPGSystem from "../utils/RPGSystem";
 
 const command: ChatInputApplicationCommandStructure = {
     data: {
         name: 'rpg',
         description: 'rpg game but is AI-generated',
         options: [
+            {
+                name: 'setup',
+                description: 'get started with the game',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'character',
+                        description: 'choose your RPG character',
+                        type: ApplicationCommandOptionType.String,
+                        required: true,
+                        autocomplete: true
+                    },
+                    {
+                        name: 'appearance',
+                        description: 'describe your RPG appearance',
+                        type: ApplicationCommandOptionType.String,
+                        required: true
+                    },
+                    {
+                        name: 'backstory',
+                        description: 'tell a bit about your RPG backstory',
+                        type: ApplicationCommandOptionType.String
+                    }
+                ]
+            },
+            {
+                name: 'profile',
+                description: 'see your profile and status',
+                type: ApplicationCommandOptionType.SubcommandGroup,
+                options: [
+                    {
+                        name: 'balance',
+                        description: 'see your wallet and bank balance',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'inventory',
+                        description: 'see your inventory',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'stats',
+                        description: 'see your level and experience',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'pets',
+                        description: 'see your pets',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'skills',
+                        description: 'see your acquired skills',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'characters',
+                        description: 'see your unlocked characters',
+                        type: ApplicationCommandOptionType.Subcommand
+                    },
+                    {
+                        name: 'full',
+                        description: 'see everything you have',
+                        type: ApplicationCommandOptionType.Subcommand
+                    }
+                ]
+            },
             {
                 name: 'modify',
                 description: 'modify your profile',
@@ -78,73 +144,6 @@ const command: ChatInputApplicationCommandStructure = {
                                 required: true
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: 'profile',
-                description: 'see your profile and status',
-                type: ApplicationCommandOptionType.SubcommandGroup,
-                options: [
-                    {
-                        name: 'balance',
-                        description: 'see your wallet and bank balance',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'inventory',
-                        description: 'see your inventory',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'stats',
-                        description: 'see your level and experience',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'pets',
-                        description: 'see your pets',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'skills',
-                        description: 'see your acquired skills',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'characters',
-                        description: 'see your unlocked characters',
-                        type: ApplicationCommandOptionType.Subcommand
-                    },
-                    {
-                        name: 'full',
-                        description: 'see everything you have',
-                        type: ApplicationCommandOptionType.Subcommand
-                    }
-                ]
-            },
-            {
-                name: 'setup',
-                description: 'get started with the game',
-                type: ApplicationCommandOptionType.Subcommand,
-                options: [
-                    {
-                        name: 'character',
-                        description: 'choose your RPG character',
-                        type: ApplicationCommandOptionType.String,
-                        required: true,
-                        autocomplete: true
-                    },
-                    {
-                        name: 'appearance',
-                        description: 'describe your RPG appearance',
-                        type: ApplicationCommandOptionType.String,
-                        required: true
-                    },
-                    {
-                        name: 'backstory',
-                        description: 'tell a bit about your RPG backstory',
-                        type: ApplicationCommandOptionType.String
                     }
                 ]
             },
@@ -254,12 +253,13 @@ const command: ChatInputApplicationCommandStructure = {
             }
         ],
     },
-
+    
     async autocomplete(interaction) {
+        const RPG = new RPGSystem();
         const focusedOption = interaction.options.getFocused(true);
         const subcommandGroup = interaction.options.getSubcommandGroup(false);
         const subcommand = interaction.options.getSubcommand(false);
-
+        
         const handlers = [
             {
                 subcommandGroup: 'modify',
@@ -268,8 +268,8 @@ const command: ChatInputApplicationCommandStructure = {
                 fetchFunction: RPG.getItemNames,
             },
             {
-                subcommandGroup: 'setup',
-                subcommand: null,
+                subcommandGroup: null,
+                subcommand: 'setup',
                 optionName: 'character',
                 fetchFunction: RPG.getCharacterNames,
             },
@@ -326,6 +326,7 @@ const command: ChatInputApplicationCommandStructure = {
 
         if (!handler) return;
 
+
         const names = await handler.fetchFunction();
         const focusedValue = focusedOption.value.toLowerCase();
 
@@ -339,7 +340,34 @@ const command: ChatInputApplicationCommandStructure = {
     },
 
     async execute(interaction) {
+        const RPG = new RPGSystem(interaction.user.id);
+        const subcommandGroup = interaction.options.getSubcommandGroup(false);
+        const subcommand = interaction.options.getSubcommand(false);
+        const trigger = subcommand || subcommandGroup;
 
+        switch (trigger) {
+            case 'setup':
+                await RPG.setup(interaction);
+                break;
+            case 'profile':
+                // Add code for profile trigger
+                break;
+            case 'modify':
+                // Add code for modify trigger
+                break;
+            case 'shop':
+                // Add code for shop trigger
+                break;
+            case 'adventure':
+                // Add code for adventure trigger
+                break;
+            case 'capital':
+                // Add code for capital trigger
+                break;
+            default:
+                // Add code for default case
+                break;
+        }
     }
 };
 

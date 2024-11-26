@@ -49,66 +49,105 @@ export default {
     },
 
     //Help
-    HELP: {
-        QUESTIONS: [
-            // Command questions
-            {
-                QUESTION: "Command question - how do I use chat command?",
-                REFERENCE: "COMMAND_CHAT"
+    HELP_QUESTIONS: [
+        // Command questions
+        {
+            QUESTION: "Command question - how do I use chat command?",
+            REFERENCE: "COMMAND_CHAT"
+        },
+        {
+            QUESTION: "Command question - how do I use note command?",
+            REFERENCE: "COMMAND_NOTE"
+        },
+        {
+            QUESTION: "Command question - how do I use ping command?",
+            REFERENCE: "COMMAND_PING"
+        },
+        {
+            QUESTION: "Command question - how do I use help command?",
+            REFERENCE: "COMMAND_HELP"
+        },
+        {
+            QUESTION: "Command question - how do I use rpg command?",
+            REFERENCE: "COMMAND_RPG"
+        },
+        {
+            QUESTION: "Command question - what are the available commands?",
+            REFERENCE: "COMMAND_LIST"
+        },
+        // Bot info questions
+        {
+            QUESTION: "Bot info question - what is this bot about?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - what is the AI provider of this bot?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - is the bot open source and free to use?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - where is the source code of this bot?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - who is the creator of this bot?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - what is the version of this bot?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - what is the license of this bot?",
+            REFERENCE: "FILE_README.md"
+        },
+        {
+            QUESTION: "Bot info question - can I recieve the full information of this bot?",
+            REFERENCE: "FILE_README.md"
+        }
+    ],
+
+    // Default RPG settings schema
+    DEFAULT_RPG_SETTINGS_SCHEMA: {
+        type: 'object',
+        properties: {
+            character: { type: 'string' },
+            class: { type: 'string' },
+            appearance: { type: 'string' },
+            backstory: { type: 'string' },
+            stats: {
+                type: 'object',
+                properties: {
+                    level: { type: 'integer' },
+                    experience: { type: 'integer' },
+                    health: { type: 'integer' },
+                    mana: { type: 'integer' },
+                    stamina: { type: 'integer' },
+                    strength: { type: 'integer' },
+                    magic: { type: 'integer' }
+                },
+                required: ['level', 'experience', 'health', 'mana', 'stamina', 'strength', 'magic']
             },
-            {
-                QUESTION: "Command question - how do I use note command?",
-                REFERENCE: "COMMAND_NOTE"
+            inventory: {
+                type: 'array',
+                items: { type: 'string' }
             },
-            {
-                QUESTION: "Command question - how do I use ping command?",
-                REFERENCE: "COMMAND_PING"
+            skills: {
+                type: 'array',
+                items: { type: 'string' }
             },
-            {
-                QUESTION: "Command question - how do I use help command?",
-                REFERENCE: "COMMAND_HELP"
+            pets: {
+                type: 'array',
+                items: { type: 'string' }
             },
-            {
-                QUESTION: "Command question - how do I use rpg command?",
-                REFERENCE: "COMMAND_RPG"
-            },
-            {
-                QUESTION: "Command question - what are the available commands?",
-                REFERENCE: "COMMAND_LIST"
-            },
-            // Bot info questions
-            {
-                QUESTION: "Bot info question - what is this bot about?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - what is the AI provider of this bot?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - is the bot open source and free to use?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - where is the source code of this bot?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - who is the creator of this bot?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - what is the version of this bot?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - what is the license of this bot?",
-                REFERENCE: "FILE_README.md"
-            },
-            {
-                QUESTION: "Bot info question - can I recieve the full information of this bot?",
-                REFERENCE: "FILE_README.md"
+            unlocked_characters: {
+                type: 'array',
+                items: { type: 'string' }
             }
-        ]
+        },
+        required: ['character', 'appearance', 'backstory', 'stats', 'inventory', 'skills', 'pets', 'unlocked_characters']
     }
 }

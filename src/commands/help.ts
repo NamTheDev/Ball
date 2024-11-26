@@ -23,7 +23,7 @@ const command: ChatInputApplicationCommandStructure = {
         const focusedValue = interaction.options.getFocused();
         const maxAutocompleteChoices = 24;
 
-        const questions = config.HELP.QUESTIONS
+        const questions = config.HELP_QUESTIONS
             .map(({ QUESTION, REFERENCE }) => ({ name: QUESTION, value: `${QUESTION}_${REFERENCE}` }))
             .slice(0, maxAutocompleteChoices)
 
