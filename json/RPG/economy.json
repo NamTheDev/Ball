@@ -8,147 +8,101 @@
         "Weapons": [
             {
                 "name": "Holy Sword",
-                "price": {
-                    "Gold": 500
-                }
+                "price": "500 Gold"
             },
             {
                 "name": "Sickle",
-                "price": {
-                    "Gold": 100
-                }
+                "price": "100 Gold"
             },
             {
                 "name": "Chainsword",
-                "price": {
-                    "Gold": 50
-                }
+                "price": "50 Gold"
             },
             {
                 "name": "Longsword",
-                "price": {
-                    "Gold": 20
-                }
+                "price": "20 Gold"
             },
             {
                 "name": "Sword",
-                "price": {
-                    "Gold": 10
-                }
+                "price": "10 Gold"
             },
             {
                 "name": "Dagger",
-                "price": {
-                    "Gold": 5
-                }
+                "price": "5 Gold"
             }
         ],
         "Armors": [
             {
                 "name": "Holy Armor",
-                "price": {
-                    "Gold": 500
-                }
+                "price": "500 Gold"
             },
             {
                 "name": "Mithril Armor",
-                "price": {
-                    "Gold": 100
-                }
+                "price": "100 Gold"
             },
             {
                 "name": "Juggernaut Armor",
-                "price": {
-                    "Gold": 50
-                }
+                "price": "50 Gold"
             },
             {
                 "name": "Semi-Heavy Armor",
-                "price": {
-                    "Gold": 20
-                }
+                "price": "20 Gold"
             },
             {
                 "name": "Chainmail Armor",
-                "price": {
-                    "Gold": 10
-                }
+                "price": "10 Gold"
             },
             {
                 "name": "Leather Armor",
-                "price": {
-                    "Gold": 5
-                }
+                "price": "5 Gold"
             }
         ],
         "Potions": [
             {
                 "name": "Health Potion",
-                "price": {
-                    "Silver": 10
-                }
+                "price": "10 Silver"
             },
             {
                 "name": "Mana Potion",
-                "price": {
-                    "Silver": 10
-                }
+                "price": "10 Silver"
             },
             {
                 "name": "Stamina Potion",
-                "price": {
-                    "Silver": 10
-                }
+                "price": "10 Silver"
             },
             {
                 "name": "Poison Potion",
-                "price": {
-                    "Silver": 10
-                }
+                "price": "10 Silver"
             }
         ],
         "Pets": [
             {
                 "name": "Dragon",
-                "price": {
-                    "Bronze": 1000
-                }
+                "price": "1000 Bronze"
             },
             {
                 "name": "White Wolf",
-                "price": {
-                    "Bronze": 500
-                }
+                "price": "500 Bronze"
             },
             {
                 "name": "Wolf",
-                "price": {
-                    "Bronze": 200
-                }
+                "price": "200 Bronze"
             },
             {
                 "name": "Great Eagle",
-                "price": {
-                    "Bronze": 100
-                }
+                "price": "100 Bronze"
             },
             {
                 "name": "Eagle",
-                "price": {
-                    "Bronze": 50
-                }
+                "price": "50 Bronze"
             },
             {
                 "name": "Mithril Snake",
-                "price": {
-                    "Bronze": 10
-                }
+                "price": "10 Bronze"
             },
             {
                 "name": "Snake",
-                "price": {
-                    "Bronze": 5
-                }
+                "price": "5 Bronze"
             }
         ]
     }

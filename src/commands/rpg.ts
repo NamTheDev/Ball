@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType } from "discord.js";
 import type { ChatInputApplicationCommandStructure } from "../types";
+import RPG from "../utils/RPG";
 
 
 const command: ChatInputApplicationCommandStructure = {
@@ -191,7 +192,8 @@ const command: ChatInputApplicationCommandStructure = {
                         name: 'biome',
                         description: 'choose your adventure biome',
                         type: ApplicationCommandOptionType.String,
-                        required: true
+                        required: true,
+                        autocomplete: true
                     },
                     {
                         name: 'character',
@@ -226,20 +228,6 @@ const command: ChatInputApplicationCommandStructure = {
                         ]
                     },
                     {
-                        name: 'guild',
-                        description: 'see the guild office',
-                        type: ApplicationCommandOptionType.Subcommand,
-                        options: [
-                            {
-                                name: 'apply',
-                                description: 'apply a quest',
-                                type: ApplicationCommandOptionType.String,
-                                required: true,
-                                autocomplete: true
-                            }
-                        ]
-                    },
-                    {
                         name: 'blacksmith',
                         description: 'see the blacksmith',
                         type: ApplicationCommandOptionType.Subcommand,
@@ -267,101 +255,89 @@ const command: ChatInputApplicationCommandStructure = {
         ],
     },
 
-    async autocomplete(interaction, client) {
+    async autocomplete(interaction) {
         const focusedOption = interaction.options.getFocused(true);
         const subcommandGroup = interaction.options.getSubcommandGroup(false);
         const subcommand = interaction.options.getSubcommand(false);
 
-        if (subcommandGroup === 'modify') {
-            if (subcommand === 'equip') {
-                if (focusedOption.name === 'item') {
-                    const items = await getItemNames();
-                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredItems.map(item => ({ name: item, value: item }))
-                    );
-                }
-            }
-        }
+        const handlers = [
+            {
+                subcommandGroup: 'modify',
+                subcommand: 'equip',
+                optionName: 'item',
+                fetchFunction: RPG.getItemNames,
+            },
+            {
+                subcommandGroup: 'setup',
+                subcommand: null,
+                optionName: 'character',
+                fetchFunction: RPG.getCharacterNames,
+            },
+            {
+                subcommandGroup: 'shop',
+                subcommand: 'buy',
+                optionName: 'item',
+                fetchFunction: RPG.getItemNames,
+            },
+            {
+                subcommandGroup: 'shop',
+                subcommand: 'sell',
+                optionName: 'item',
+                fetchFunction: RPG.getItemNames,
+            },
+            {
+                subcommandGroup: null,
+                subcommand: 'adventure',
+                optionName: 'biome',
+                fetchFunction: RPG.getBiomeNames,
+            },
+            {
+                subcommandGroup: null,
+                subcommand: 'adventure',
+                optionName: 'character',
+                fetchFunction: RPG.getCharacterNames,
+            },
+            {
+                subcommandGroup: null,
+                subcommand: 'adventure',
+                optionName: 'pet',
+                fetchFunction: RPG.getPetNames,
+            },
+            {
+                subcommandGroup: 'capital',
+                subcommand: 'work',
+                optionName: 'character',
+                fetchFunction: RPG.getCharacterNames,
+            },
+            {
+                subcommandGroup: 'capital',
+                subcommand: 'blacksmith',
+                optionName: 'weapon',
+                fetchFunction: RPG.getWeaponNames,
+            },
+        ];
 
-        if (subcommandGroup === 'setup') {
-            if (focusedOption.name === 'character') {
-                const characters = await getCharacterNames();
-                const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
-                await interaction.respond(
-                    filteredCharacters.map(character => ({ name: character, value: character }))
-                );
-            }
-        }
+        const handler = handlers.find(
+            (h) =>
+                h.subcommandGroup === subcommandGroup &&
+                h.subcommand === subcommand &&
+                h.optionName === focusedOption.name
+        );
 
-        if (subcommandGroup === 'shop') {
-            if (subcommand === 'buy') {
-                if (focusedOption.name === 'item') {
-                    const items = await getItemNames();
-                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredItems.map(item => ({ name: item, value: item }))
-                    );
-                }
-            }
-            if (subcommand === 'sell') {
-                if (focusedOption.name === 'item') {
-                    const items = await getItemNames();
-                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredItems.map(item => ({ name: item, value: item }))
-                    );
-                }
-            }
-        }
+        if (!handler) return;
 
-        if (subcommand === 'adventure') {
-            if (focusedOption.name === 'character') {
-                const characters = await getCharacterNames();
-                const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
-                await interaction.respond(
-                    filteredCharacters.map(character => ({ name: character, value: character }))
-                );
-            }
-            if (focusedOption.name === 'pet') {
-                const pets = await getPetNames();
-                const filteredPets = pets.filter(pet => pet.startsWith(focusedOption.value));
-                await interaction.respond(
-                    filteredPets.map(pet => ({ name: pet, value: pet }))
-                );
-            }
-        }
+        const names = await handler.fetchFunction();
+        const focusedValue = focusedOption.value.toLowerCase();
 
-        if (subcommandGroup === 'capital') {
-            if (subcommand === 'work') {
-                if (focusedOption.name === 'character') {
-                    const characters = await getCharacterNames();
-                    const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredCharacters.map(character => ({ name: character, value: character }))
-                    );
-                }
-            }
-            if (subcommand === 'guild') {
-                if (focusedOption.name === 'apply') {
-                    const quests = await getQuestNames();
-                    const filteredQuests = quests.filter(quest => quest.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredQuests.map(quest => ({ name: quest, value: quest }))
-                    );
-                }
-            }
-            if (subcommand === 'blacksmith') {
-                if (focusedOption.name === 'weapon') {
-                    const weapons = await getWeaponNames();
-                    const filteredWeapons = weapons.filter(weapon => weapon.startsWith(focusedOption.value));
-                    await interaction.respond(
-                        filteredWeapons.map(weapon => ({ name: weapon, value: weapon }))
-                    );
-                }
-            }
-        }
+        const filteredNames = names.filter((name) =>
+            !focusedValue ? true : name.toLowerCase().startsWith(focusedValue)
+        );
+
+        await interaction.respond(
+            filteredNames.map((name) => ({ name, value: name }))
+        );
     },
+
     async execute(interaction) {
 
     }
