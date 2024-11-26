@@ -8,6 +8,79 @@ const command: ChatInputApplicationCommandStructure = {
         description: 'rpg game but is AI-generated',
         options: [
             {
+                name: 'modify',
+                description: 'modify your profile',
+                type: ApplicationCommandOptionType.SubcommandGroup,
+                options: [
+                    {
+                        name: 'equip',
+                        description: 'equip an item',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'item',
+                                description: 'item to equip',
+                                type: ApplicationCommandOptionType.String,
+                                required: true,
+                                autocomplete: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'unequip',
+                        description: 'unequip an item',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'item',
+                                description: 'item to unequip',
+                                type: ApplicationCommandOptionType.String,
+                                required: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'summon',
+                        description: 'summon a pet',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'pet',
+                                description: 'pet to summon',
+                                type: ApplicationCommandOptionType.String,
+                                required: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'activate',
+                        description: 'activate a skill',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'skill',
+                                description: 'skill to activate',
+                                type: ApplicationCommandOptionType.String,
+                                required: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'switch',
+                        description: 'switch your character',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'character',
+                                description: 'character to switch to',
+                                type: ApplicationCommandOptionType.String,
+                                required: true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: 'profile',
                 description: 'see your profile and status',
                 type: ApplicationCommandOptionType.SubcommandGroup,
@@ -33,12 +106,12 @@ const command: ChatInputApplicationCommandStructure = {
                         type: ApplicationCommandOptionType.Subcommand
                     },
                     {
-                        name: 'skill-tree',
+                        name: 'skills',
                         description: 'see your acquired skills',
                         type: ApplicationCommandOptionType.Subcommand
                     },
                     {
-                        name: 'unlocked-characters',
+                        name: 'characters',
                         description: 'see your unlocked characters',
                         type: ApplicationCommandOptionType.Subcommand
                     },
@@ -134,7 +207,160 @@ const command: ChatInputApplicationCommandStructure = {
                     }
                 ]
             },
+            {
+                name: 'capital',
+                description: 'see your capital',
+                type: ApplicationCommandOptionType.SubcommandGroup,
+                options: [
+                    {
+                        name: 'work',
+                        description: 'work at your capital',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'character',
+                                description: 'work as a character',
+                                type: ApplicationCommandOptionType.String,
+                                autocomplete: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'guild',
+                        description: 'see the guild office',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'apply',
+                                description: 'apply a quest',
+                                type: ApplicationCommandOptionType.String,
+                                required: true,
+                                autocomplete: true
+                            }
+                        ]
+                    },
+                    {
+                        name: 'blacksmith',
+                        description: 'see the blacksmith',
+                        type: ApplicationCommandOptionType.Subcommand,
+                        options: [
+                            {
+                                name: 'weapon',
+                                description: 'select the weapon to modify',
+                                type: ApplicationCommandOptionType.String,
+                                required: true,
+                                autocomplete: true
+                            },
+                            {
+                                name: 'action',
+                                description: 'upgrade or sell the weapon (with higher price)',
+                                type: ApplicationCommandOptionType.String,
+                                choices: [
+                                    { name: 'upgrade', value: 'upgrade' },
+                                    { name: 'sell', value: 'sell' }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
         ],
+    },
+
+    async autocomplete(interaction, client) {
+        const focusedOption = interaction.options.getFocused(true);
+        const subcommandGroup = interaction.options.getSubcommandGroup(false);
+        const subcommand = interaction.options.getSubcommand(false);
+
+        if (subcommandGroup === 'modify') {
+            if (subcommand === 'equip') {
+                if (focusedOption.name === 'item') {
+                    const items = await getItemNames();
+                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredItems.map(item => ({ name: item, value: item }))
+                    );
+                }
+            }
+        }
+
+        if (subcommandGroup === 'setup') {
+            if (focusedOption.name === 'character') {
+                const characters = await getCharacterNames();
+                const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
+                await interaction.respond(
+                    filteredCharacters.map(character => ({ name: character, value: character }))
+                );
+            }
+        }
+
+        if (subcommandGroup === 'shop') {
+            if (subcommand === 'buy') {
+                if (focusedOption.name === 'item') {
+                    const items = await getItemNames();
+                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredItems.map(item => ({ name: item, value: item }))
+                    );
+                }
+            }
+            if (subcommand === 'sell') {
+                if (focusedOption.name === 'item') {
+                    const items = await getItemNames();
+                    const filteredItems = items.filter(item => item.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredItems.map(item => ({ name: item, value: item }))
+                    );
+                }
+            }
+        }
+
+        if (subcommand === 'adventure') {
+            if (focusedOption.name === 'character') {
+                const characters = await getCharacterNames();
+                const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
+                await interaction.respond(
+                    filteredCharacters.map(character => ({ name: character, value: character }))
+                );
+            }
+            if (focusedOption.name === 'pet') {
+                const pets = await getPetNames();
+                const filteredPets = pets.filter(pet => pet.startsWith(focusedOption.value));
+                await interaction.respond(
+                    filteredPets.map(pet => ({ name: pet, value: pet }))
+                );
+            }
+        }
+
+        if (subcommandGroup === 'capital') {
+            if (subcommand === 'work') {
+                if (focusedOption.name === 'character') {
+                    const characters = await getCharacterNames();
+                    const filteredCharacters = characters.filter(character => character.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredCharacters.map(character => ({ name: character, value: character }))
+                    );
+                }
+            }
+            if (subcommand === 'guild') {
+                if (focusedOption.name === 'apply') {
+                    const quests = await getQuestNames();
+                    const filteredQuests = quests.filter(quest => quest.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredQuests.map(quest => ({ name: quest, value: quest }))
+                    );
+                }
+            }
+            if (subcommand === 'blacksmith') {
+                if (focusedOption.name === 'weapon') {
+                    const weapons = await getWeaponNames();
+                    const filteredWeapons = weapons.filter(weapon => weapon.startsWith(focusedOption.value));
+                    await interaction.respond(
+                        filteredWeapons.map(weapon => ({ name: weapon, value: weapon }))
+                    );
+                }
+            }
+        }
     },
     async execute(interaction) {
 
