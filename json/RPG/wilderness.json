@@ -1,310 +1,315 @@
 [
     {
-        "name": "Terrestrial Biomes",
+        "name": "Wilderness",
         "subcategories": [
             {
-                "name": "Desert",
-                "monsters": [
-                    "Giant Scorpion",
-                    "Dune Worm",
-                    "Mummy",
-                    "Scarab",
-                    "Dust Wraith"
+                "name": "Terrestrial Biomes",
+                "subcategories": [
+                    {
+                        "name": "Desert",
+                        "monsters": [
+                            "Giant Scorpion",
+                            "Dune Worm",
+                            "Mummy",
+                            "Scarab",
+                            "Dust Wraith"
+                        ]
+                    },
+                    {
+                        "name": "Forest",
+                        "monsters": [
+                            "Treant",
+                            "Unicorn",
+                            "Dryad",
+                            "Centaur",
+                            "Satyr"
+                        ]
+                    },
+                    {
+                        "name": "Grassland",
+                        "monsters": [
+                            "Centaur",
+                            "Satyr",
+                            "Minotaur",
+                            "Chimera",
+                            "Griffin"
+                        ]
+                    },
+                    {
+                        "name": "Mountain",
+                        "monsters": [
+                            "Harpy",
+                            "Gargoyle",
+                            "Troll",
+                            "Yeti",
+                            "Frost Giant"
+                        ]
+                    },
+                    {
+                        "name": "Tundra",
+                        "monsters": [
+                            "Yeti",
+                            "Frost Giant",
+                            "Ice Troll",
+                            "Snowman",
+                            "Ice Wraith"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Forest",
-                "monsters": [
-                    "Treant",
-                    "Unicorn",
-                    "Dryad",
-                    "Centaur",
-                    "Satyr"
+                "name": "Freshwater Biomes",
+                "subcategories": [
+                    {
+                        "name": "Lake",
+                        "monsters": [
+                            "Water Nixie",
+                            "Selkie",
+                            "Kelpie",
+                            "Merrow",
+                            "Siren"
+                        ]
+                    },
+                    {
+                        "name": "River",
+                        "monsters": [
+                            "Mermaid",
+                            "Water Nixie",
+                            "Naiad",
+                            "Kelpie",
+                            "Siren"
+                        ]
+                    },
+                    {
+                        "name": "Delta",
+                        "monsters": [
+                            "Otterkin",
+                            "Crocodile",
+                            "River Daimon",
+                            "Fishfolk",
+                            "Siren"
+                        ]
+                    },
+                    {
+                        "name": "Wetland",
+                        "monsters": [
+                            "Alligator",
+                            "Crocodile",
+                            "Anaconda",
+                            "Boa Constrictor",
+                            "Green Snake"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Grassland",
-                "monsters": [
-                    "Centaur",
-                    "Satyr",
-                    "Minotaur",
-                    "Chimera",
-                    "Griffin"
+                "name": "Marine Biomes",
+                "subcategories": [
+                    {
+                        "name": "Ocean",
+                        "monsters": [
+                            "Kraken",
+                            "Selkie",
+                            "Kelpie",
+                            "Merrow",
+                            "Sea Dragon"
+                        ]
+                    },
+                    {
+                        "name": "Coral Reef",
+                        "monsters": [
+                            "Selkie",
+                            "Merrow",
+                            "Siren",
+                            "Kelpie",
+                            "Fishfolk"
+                        ]
+                    },
+                    {
+                        "name": "Kelp Forest",
+                        "monsters": [
+                            "Kelpie",
+                            "Selkie",
+                            "Merrow",
+                            "Siren",
+                            "Kelpfolk"
+                        ]
+                    },
+                    {
+                        "name": "Mangrove",
+                        "monsters": [
+                            "Merrow",
+                            "Kelpie",
+                            "Siren",
+                            "Selkie",
+                            "Mangrove Daimon"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Mountain",
-                "monsters": [
-                    "Harpy",
-                    "Gargoyle",
-                    "Troll",
-                    "Yeti",
-                    "Frost Giant"
+                "name": "Transitional Biomes",
+                "subcategories": [
+                    {
+                        "name": "Savanna",
+                        "monsters": [
+                            "Minotaur",
+                            "Centaur",
+                            "Savanna Spirit",
+                            "Cheetah",
+                            "Lion"
+                        ]
+                    },
+                    {
+                        "name": "Alpine",
+                        "monsters": [
+                            "Frost Giant",
+                            "Yeti",
+                            "Mountain Spirit",
+                            "Genie",
+                            "Gargoyle"
+                        ]
+                    },
+                    {
+                        "name": "Subtropical Desert",
+                        "monsters": [
+                            "Sand Wraith",
+                            "Desert Spirit",
+                            "Sand Golem",
+                            "Golden Scarab",
+                            "Dune Worm"
+                        ]
+                    },
+                    {
+                        "name": "Permafrost",
+                        "monsters": [
+                            "Ice Troll",
+                            "Frost Giant",
+                            "Yeti",
+                            "Snowman",
+                            "Ice Wraith"
+                        ]
+                    },
+                    {
+                        "name": "Cloud Forest",
+                        "monsters": [
+                            "Cloud Serpent",
+                            "Cloud Spirit",
+                            "Kite",
+                            "Harpy",
+                            "Gargoyle"
+                        ]
+                    },
+                    {
+                        "name": "Gallery Forest",
+                        "monsters": [
+                            "Dryad",
+                            "Forest Spirit",
+                            "Centaur",
+                            "Satyr",
+                            "Nymph"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Tundra",
-                "monsters": [
-                    "Yeti",
-                    "Frost Giant",
-                    "Ice Troll",
-                    "Snowman",
-                    "Ice Wraith"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Freshwater Biomes",
-        "subcategories": [
-            {
-                "name": "Lake",
-                "monsters": [
-                    "Water Nixie",
-                    "Selkie",
-                    "Kelpie",
-                    "Merrow",
-                    "Siren"
-                ]
-            },
-            {
-                "name": "River",
-                "monsters": [
-                    "Mermaid",
-                    "Water Nixie",
-                    "Naiad",
-                    "Kelpie",
-                    "Siren"
-                ]
-            },
-            {
-                "name": "Delta",
-                "monsters": [
-                    "Otterkin",
-                    "Crocodile",
-                    "River Daimon",
-                    "Fishfolk",
-                    "Siren"
-                ]
-            },
-            {
-                "name": "Wetland",
-                "monsters": [
-                    "Alligator",
-                    "Crocodile",
-                    "Anaconda",
-                    "Boa Constrictor",
-                    "Green Snake"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Marine Biomes",
-        "subcategories": [
-            {
-                "name": "Ocean",
-                "monsters": [
-                    "Kraken",
-                    "Selkie",
-                    "Kelpie",
-                    "Merrow",
-                    "Sea Dragon"
+                "name": "Transitional Aquatic Biomes",
+                "subcategories": [
+                    {
+                        "name": "Coastal",
+                        "monsters": [
+                            "Selkie",
+                            "Merrow",
+                            "Siren",
+                            "Kelpie",
+                            "Seadog"
+                        ]
+                    },
+                    {
+                        "name": "Rocky Coast",
+                        "monsters": [
+                            "Merrow",
+                            "Selkie",
+                            "Kelpie",
+                            "Siren",
+                            "Fishfolk"
+                        ]
+                    },
+                    {
+                        "name": "Sandy Coast",
+                        "monsters": [
+                            "Siren",
+                            "Selkie",
+                            "Merrow",
+                            "Kelpie",
+                            "Beach Spirit"
+                        ]
+                    },
+                    {
+                        "name": "Estuary",
+                        "monsters": [
+                            "Alligator",
+                            "Crocodile",
+                            "Anaconda",
+                            "Boa Constrictor",
+                            "Green Snake"
+                        ]
+                    },
+                    {
+                        "name": "Marsh",
+                        "monsters": [
+                            "Lizardfolk",
+                            "Alligator",
+                            "Crocodile",
+                            "Anaconda",
+                            "Boa Constrictor"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Coral Reef",
-                "monsters": [
-                    "Selkie",
-                    "Merrow",
-                    "Siren",
-                    "Kelpie",
-                    "Fishfolk"
-                ]
-            },
-            {
-                "name": "Kelp Forest",
-                "monsters": [
-                    "Kelpie",
-                    "Selkie",
-                    "Merrow",
-                    "Siren",
-                    "Kelpfolk"
-                ]
-            },
-            {
-                "name": "Mangrove",
-                "monsters": [
-                    "Merrow",
-                    "Kelpie",
-                    "Siren",
-                    "Selkie",
-                    "Mangrove Daimon"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Transitional Biomes",
-        "subcategories": [
-            {
-                "name": "Savanna",
-                "monsters": [
-                    "Minotaur",
-                    "Centaur",
-                    "Savanna Spirit",
-                    "Cheetah",
-                    "Lion"
-                ]
-            },
-            {
-                "name": "Alpine",
-                "monsters": [
-                    "Frost Giant",
-                    "Yeti",
-                    "Mountain Spirit",
-                    "Genie",
-                    "Gargoyle"
-                ]
-            },
-            {
-                "name": "Subtropical Desert",
-                "monsters": [
-                    "Sand Wraith",
-                    "Desert Spirit",
-                    "Sand Golem",
-                    "Golden Scarab",
-                    "Dune Worm"
-                ]
-            },
-            {
-                "name": "Permafrost",
-                "monsters": [
-                    "Ice Troll",
-                    "Frost Giant",
-                    "Yeti",
-                    "Snowman",
-                    "Ice Wraith"
-                ]
-            },
-            {
-                "name": "Cloud Forest",
-                "monsters": [
-                    "Cloud Serpent",
-                    "Cloud Spirit",
-                    "Kite",
-                    "Harpy",
-                    "Gargoyle"
-                ]
-            },
-            {
-                "name": "Gallery Forest",
-                "monsters": [
-                    "Dryad",
-                    "Forest Spirit",
-                    "Centaur",
-                    "Satyr",
-                    "Nymph"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Transitional Aquatic Biomes",
-        "subcategories": [
-            {
-                "name": "Coastal",
-                "monsters": [
-                    "Selkie",
-                    "Merrow",
-                    "Siren",
-                    "Kelpie",
-                    "Seadog"
-                ]
-            },
-            {
-                "name": "Rocky Coast",
-                "monsters": [
-                    "Merrow",
-                    "Selkie",
-                    "Kelpie",
-                    "Siren",
-                    "Fishfolk"
-                ]
-            },
-            {
-                "name": "Sandy Coast",
-                "monsters": [
-                    "Siren",
-                    "Selkie",
-                    "Merrow",
-                    "Kelpie",
-                    "Beach Spirit"
-                ]
-            },
-            {
-                "name": "Estuary",
-                "monsters": [
-                    "Alligator",
-                    "Crocodile",
-                    "Anaconda",
-                    "Boa Constrictor",
-                    "Green Snake"
-                ]
-            },
-            {
-                "name": "Marsh",
-                "monsters": [
-                    "Lizardfolk",
-                    "Alligator",
-                    "Crocodile",
-                    "Anaconda",
-                    "Boa Constrictor"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Mountainous Biomes",
-        "subcategories": [
-            {
-                "name": "Tibetan Plateau",
-                "monsters": [
-                    "Yeti",
-                    "Frost Giant",
-                    "Ice Troll",
-                    "Snowman",
-                    "Ice Wraith"
-                ]
-            },
-            {
-                "name": "Plateau",
-                "monsters": [
-                    "Gargoyle",
-                    "Mountain Spirit",
-                    "Genie",
-                    "Snowman",
-                    "Ice Wraith"
-                ]
-            },
-            {
-                "name": "Canyon",
-                "monsters": [
-                    "Chimera",
-                    "Gargoyle",
-                    "Mountain Spirit",
-                    "Genie",
-                    "Snowman"
-                ]
-            },
-            {
-                "name": "Badlands",
-                "monsters": [
-                    "Basilisk",
-                    "Sand Wraith",
-                    "Desert Spirit",
-                    "Sand Golem",
-                    "Golden Scarab"
+                "name": "Mountainous Biomes",
+                "subcategories": [
+                    {
+                        "name": "Tibetan Plateau",
+                        "monsters": [
+                            "Yeti",
+                            "Frost Giant",
+                            "Ice Troll",
+                            "Snowman",
+                            "Ice Wraith"
+                        ]
+                    },
+                    {
+                        "name": "Plateau",
+                        "monsters": [
+                            "Gargoyle",
+                            "Mountain Spirit",
+                            "Genie",
+                            "Snowman",
+                            "Ice Wraith"
+                        ]
+                    },
+                    {
+                        "name": "Canyon",
+                        "monsters": [
+                            "Chimera",
+                            "Gargoyle",
+                            "Mountain Spirit",
+                            "Genie",
+                            "Snowman"
+                        ]
+                    },
+                    {
+                        "name": "Badlands",
+                        "monsters": [
+                            "Basilisk",
+                            "Sand Wraith",
+                            "Desert Spirit",
+                            "Sand Golem",
+                            "Golden Scarab"
+                        ]
+                    }
                 ]
             }
         ]

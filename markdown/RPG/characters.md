@@ -1,10 +1,10 @@
-## Characters
+# Characters
 
-### Warrior
+## Warrior
 
 **Character**: **Adrian**
 
-#### Skills
+### Skills
 
 - **Battle Cry**  
   Increases damage dealt by 20% and armor by 30% for 5 seconds.  
@@ -18,16 +18,24 @@
   Absorbs up to 500 damage and increases block chance by 50% for 10 seconds.  
   *Cooldown*: 90 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High physical damage.
 - **Disadvantages**: Vulnerable to magic damage.
 
-### Assassin
+### Stats
+
+- **Health**: 1500
+- **Mana**: 200
+- **Stamina**: 300
+- **Strength**: 250
+- **Magic**: 50
+
+## Assassin
 
 **Character**: **Ylang**
 
-#### Skills
+### Skills
 
 - **Critical Strike**  
   Increases critical strike chance by 30% for 10 seconds.  
@@ -41,16 +49,24 @@
   Deals 200 physical damage to a target from behind.  
   *Cooldown*: 20 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High critical strike chance.
 - **Disadvantages**: Low health and defense.
 
-### Mage
+### Stats
+
+- **Health**: 800
+- **Mana**: 150
+- **Stamina**: 250
+- **Strength**: 150
+- **Magic**: 100
+
+## Mage
 
 **Character**: **Alex**
 
-#### Skills
+### Skills
 
 - **Fireball**  
   Deals 150 magic damage to all enemies within a radius of 5 meters.  
@@ -64,16 +80,24 @@
   Teleports to a targeted location within a range of 10 meters.  
   *Cooldown*: 30 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High magic damage.
 - **Disadvantages**: Vulnerable to physical damage and low health.
 
-### Rogue
+### Stats
+
+- **Health**: 900
+- **Mana**: 500
+- **Stamina**: 200
+- **Strength**: 80
+- **Magic**: 300
+
+## Rogue
 
 **Character**: **Hector**
 
-#### Skills
+### Skills
 
 - **Agility Boost**  
   Increases agility by 20% for 10 seconds.  
@@ -87,16 +111,24 @@
   Increases movement speed by 30% for 15 seconds.  
   *Cooldown*: 60 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High agility and evasion.
 - **Disadvantages**: Vulnerable to magic damage.
 
-### Thief
+### Stats
+
+- **Health**: 1000
+- **Mana**: 150
+- **Stamina**: 250
+- **Strength**: 180
+- **Magic**: 120
+
+## Thief
 
 **Character**: **Stephen**
 
-#### Skills
+### Skills
 
 - **Poison Strike**  
   Deals 100 physical damage and applies a poison effect that deals 20 damage over 5 seconds.  
@@ -110,16 +142,24 @@
   Disarms a target, reducing their damage output by 20% for 10 seconds.  
   *Cooldown*: 30 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High agility and stealth.
 - **Disadvantages**: Vulnerable to physical damage in combat.
 
-### Alchemist
+### Stats
+
+- **Health**: 850
+- **Mana**: 180
+- **Stamina**: 220
+- **Strength**: 160
+- **Magic**: 130
+
+## Alchemist
 
 **Character**: **Lauren**
 
-#### Skills
+### Skills
 
 - **Healing Potion**  
   Restores 200 health to the Alchemist.  
@@ -133,16 +173,24 @@
   Applies a poison effect that deals 20 damage over 5 seconds to all enemies within a radius of 3 meters.  
   *Cooldown*: 30 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: Ability to create powerful potions.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
 
-### Priest
+### Stats
+
+- **Health**: 900
+- **Mana**: 400
+- **Stamina**: 200
+- **Strength**: 100
+- **Magic**: 250
+
+## Priest
 
 **Character**: **Angel**
 
-#### Skills
+### Skills
 
 - **Healing Wave**  
   Restores 150 health to all allies within a radius of 5 meters.  
@@ -156,16 +204,24 @@
   Deals 100 magic damage to a target and silences them for 5 seconds.  
   *Cooldown*: 30 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High healing and support capabilities.
 - **Disadvantages**: Vulnerable to physical damage in combat.
 
-### Healer
+### Stats
+
+- **Health**: 950
+- **Mana**: 450
+- **Stamina**: 180
+- **Strength**: 90
+- **Magic**: 280
+
+## Healer
 
 **Character**: **Milton**
 
-#### Skills
+### Skills
 
 - **Healing Hands**  
   Restores 100 health to a target ally.  
@@ -179,16 +235,24 @@
   Revives a dead ally with 50% health.  
   *Cooldown*: 180 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High healing and support capabilities.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
 
-### Necromancer
+### Stats
+
+- **Health**: 800
+- **Mana**: 500
+- **Stamina**: 150
+- **Strength**: 80
+- **Magic**: 300
+
+## Necromancer
 
 **Character**: **Xeno**
 
-#### Skills
+### Skills
 
 - **Summon Skeleton**  
   Summons a skeleton that deals 50 physical damage to enemies within a radius of 3 meters for 10 seconds.  
@@ -202,16 +266,24 @@
   Deals 100 magic damage to a target and reduces their damage output by 20% for 10 seconds.  
   *Cooldown*: 45 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: Ability to summon and control undead minions.
 - **Disadvantages**: Vulnerable to physical damage and limited health.
 
-### Engineer
+### Stats
+
+- **Health**: 850
+- **Mana**: 450
+- **Stamina**: 160
+- **Strength**: 110
+- **Magic**: 280
+
+## Engineer
 
 **Character**: **William**
 
-#### Skills
+### Skills
 
 - **Diving Bomb**  
   Deals 100 physical damage to all enemies within a radius of 3 meters and stuns them for 2 seconds.  
@@ -225,16 +297,24 @@
   Launches the Engineer 10 meters in the air, dealing 20 physical damage to enemies within a radius of 3 meters.  
   *Cooldown*: 45 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: Ability to create and repair complex devices.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
 
-### Juggernaut
+### Stats
+
+- **Health**: 1000
+- **Mana**: 300
+- **Stamina**: 250
+- **Strength**: 140
+- **Magic**: 150
+
+## Juggernaut
 
 **Character**: **Lieutenant**
 
-#### Skills
+### Skills
 
 - **Fortify**  
   Increases armor by 50% and block chance by 30% for 10 seconds.  
@@ -248,7 +328,15 @@
   Increases movement speed by 20% and makes the Juggernaut immune to crowd control effects for 10 seconds.  
   *Cooldown*: 90 seconds.
 
-#### Advantages and Disadvantages
+### Advantages and Disadvantages
 
 - **Advantages**: High health and defense.
 - **Disadvantages**: Low agility and vulnerable to magic damage.
+
+### Stats
+
+- **Health**: 1600
+- **Mana**: 250
+- **Stamina**: 300
+- **Strength**: 300
+- **Magic**: 100

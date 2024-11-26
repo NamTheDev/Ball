@@ -24,14 +24,7 @@
         ],
         "disadvantages": [
             "Vulnerable to magic damage"
-        ],
-        "stats": {
-            "health": 1500,
-            "mana": 200,
-            "stamina": 300,
-            "strength": 250,
-            "magic": 50
-        }
+        ]
     },
     {
         "name": "Ylang",
@@ -58,14 +51,7 @@
         ],
         "disadvantages": [
             "Low health and defense"
-        ],
-        "stats": {
-            "health": 800,
-            "mana": 150,
-            "stamina": 250,
-            "strength": 150,
-            "magic": 100
-        }
+        ]
     },
     {
         "name": "Alex",
@@ -92,14 +78,7 @@
         ],
         "disadvantages": [
             "Vulnerable to physical damage and low health"
-        ],
-        "stats": {
-            "health": 900,
-            "mana": 500,
-            "stamina": 200,
-            "strength": 80,
-            "magic": 300
-        }
+        ]
     },
     {
         "name": "Hector",
@@ -126,14 +105,7 @@
         ],
         "disadvantages": [
             "Vulnerable to magic damage"
-        ],
-        "stats": {
-            "health": 1000,
-            "mana": 150,
-            "stamina": 250,
-            "strength": 180,
-            "magic": 120
-        }
+        ]
     },
     {
         "name": "Stephen",
@@ -160,14 +132,7 @@
         ],
         "disadvantages": [
             "Vulnerable to physical damage in combat"
-        ],
-        "stats": {
-            "health": 850,
-            "mana": 180,
-            "stamina": 220,
-            "strength": 160,
-            "magic": 130
-        }
+        ]
     },
     {
         "name": "Lauren",
@@ -194,14 +159,7 @@
         ],
         "disadvantages": [
             "Vulnerable to magic damage and limited combat capabilities"
-        ],
-        "stats": {
-            "health": 900,
-            "mana": 400,
-            "stamina": 200,
-            "strength": 100,
-            "magic": 250
-        }
+        ]
     },
     {
         "name": "Angel",
@@ -228,14 +186,7 @@
         ],
         "disadvantages": [
             "Vulnerable to physical damage in combat"
-        ],
-        "stats": {
-            "health": 950,
-            "mana": 450,
-            "stamina": 180,
-            "strength": 90,
-            "magic": 280
-        }
+        ]
     },
     {
         "name": "Milton",
@@ -262,14 +213,7 @@
         ],
         "disadvantages": [
             "Vulnerable to magic damage and limited combat capabilities"
-        ],
-        "stats": {
-            "health": 800,
-            "mana": 500,
-            "stamina": 150,
-            "strength": 80,
-            "magic": 300
-        }
+        ]
     },
     {
         "name": "Xeno",
@@ -296,14 +240,7 @@
         ],
         "disadvantages": [
             "Vulnerable to physical damage and limited health"
-        ],
-        "stats": {
-            "health": 850,
-            "mana": 450,
-            "stamina": 160,
-            "strength": 110,
-            "magic": 280
-        }
+        ]
     },
     {
         "name": "William",
@@ -330,14 +267,7 @@
         ],
         "disadvantages": [
             "Vulnerable to magic damage and limited combat capabilities"
-        ],
-        "stats": {
-            "health": 1000,
-            "mana": 300,
-            "stamina": 250,
-            "strength": 140,
-            "magic": 150
-        }
+        ]
     },
     {
         "name": "Lieutenant",
@@ -364,13 +294,6 @@
         ],
         "disadvantages": [
             "Low agility and vulnerable to magic damage"
-        ],
-        "stats": {
-            "health": 1600,
-            "mana": 250,
-            "stamina": 300,
-            "strength": 300,
-            "magic": 100
-        }
+        ]
     }
 ]
