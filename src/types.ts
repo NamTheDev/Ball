@@ -35,4 +35,5 @@ export interface RPGData {
     inventory: string[];
     skills: string[];
     pets: string[];
+    unlocked_characters: string[];
 }

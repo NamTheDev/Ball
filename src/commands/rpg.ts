@@ -253,13 +253,13 @@ const command: ChatInputApplicationCommandStructure = {
             }
         ],
     },
-    
+
     async autocomplete(interaction) {
         const RPG = new RPGSystem();
         const focusedOption = interaction.options.getFocused(true);
         const subcommandGroup = interaction.options.getSubcommandGroup(false);
         const subcommand = interaction.options.getSubcommand(false);
-        
+
         const handlers = [
             {
                 subcommandGroup: 'modify',
@@ -343,14 +343,13 @@ const command: ChatInputApplicationCommandStructure = {
         const RPG = new RPGSystem(interaction.user.id);
         const subcommandGroup = interaction.options.getSubcommandGroup(false);
         const subcommand = interaction.options.getSubcommand(false);
-        const trigger = subcommand || subcommandGroup;
-
+        const trigger = subcommandGroup ? subcommandGroup : subcommand;
         switch (trigger) {
             case 'setup':
                 await RPG.setup(interaction);
                 break;
             case 'profile':
-                // Add code for profile trigger
+                await RPG.profile(subcommand, interaction);
                 break;
             case 'modify':
                 // Add code for modify trigger

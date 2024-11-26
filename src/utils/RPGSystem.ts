@@ -1,5 +1,5 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync } from "fs";
-import type { ChatInputCommandInteraction } from 'discord.js';
+import { existsSync, readFileSync, writeFileSync, unlinkSync } from "fs";
+import type { APIEmbed, ChatInputCommandInteraction, CommandInteraction } from 'discord.js';
 import characters from '../../json/RPG/characters.json';
 import economy from '../../json/RPG/economy.json';
 import wilderness from '../../json/RPG/wilderness.json';
@@ -12,6 +12,7 @@ export class RPGSystem {
     private databasePath: string = '';
     private filePath: string = '';
 
+    // Setup
     constructor(userID?: string) {
         if (!userID) return;
         this.userID = userID;
@@ -19,7 +20,17 @@ export class RPGSystem {
         this.filePath = `${this.databasePath}${this.userID}.json`;
     }
 
+    public async setup(interaction: ChatInputCommandInteraction) {
+        const character = interaction.options.getString('character', true);
+        const appearance = interaction.options.getString('appearance', true);
+        const backstory = interaction.options.getString('backstory') || undefined;
 
+        const response = await this.createUserData(character, appearance, backstory);
+
+        await interaction.followUp(response);
+    }
+
+    // Data management
     private readData(): RPGData {
         const data = readFileSync(this.filePath, 'utf-8');
         return JSON.parse(data);
@@ -34,7 +45,7 @@ export class RPGSystem {
         const characterAndClass = character.split(' ');
         const characterName = characterAndClass[0];
         const className = characterAndClass[1].replace(/[()]/g, "");
-        const stats = characters.find(({ name }) => name === characterName)?.stats
+        const stats = JSON.stringify(characters.find(({ name }) => name === characterName)?.stats, null, 2);
 
         const generatedData = await GroqClient.chat(
             `Character: ${characterName}.\n` +
@@ -46,6 +57,7 @@ export class RPGSystem {
             {
                 systemMessage:
                     'Generate JSON object based on data.\n' +
+                    'Keep level and experience value as 0.\n' +
                     'JSON Schema:' +
                     JSON.stringify(config.DEFAULT_RPG_SETTINGS_SCHEMA, null, 2),
                 json_object: true
@@ -86,6 +98,7 @@ export class RPGSystem {
         }
     }
 
+    // Inventory management
     public async listInventory(): Promise<string[]> {
         const data = await this.getUserData();
         return data.inventory;
@@ -114,7 +127,7 @@ export class RPGSystem {
         return existsSync(this.filePath);
     }
 
-
+    // Name data retrieval
     public async getBiomeNames(): Promise<string[]> {
         return wilderness.map(({ name }) => name);
     }
@@ -145,15 +158,39 @@ export class RPGSystem {
         return economy.shop.Weapons.map(({ name, price }) => `${name} (${price})`);
     }
 
-
-    public async setup(interaction: ChatInputCommandInteraction) {
-        const character = interaction.options.getString('character', true);
-        const appearance = interaction.options.getString('appearance', true);
-        const backstory = interaction.options.getString('backstory') || undefined;
-
-        const response = await this.createUserData(character, appearance, backstory);
-
-        await interaction.followUp(response);
+    // Profile data retrieval
+    public async profile(subcommand: string | null, interaction: CommandInteraction) {
+        if (!subcommand) return;
+        switch (subcommand) {
+            case 'full':
+                this.getFullProfile(interaction);
+                break;
+        }
+    }
+    public async getFullProfile(interaction: CommandInteraction) {
+        const data = await this.getUserData();
+        await interaction.followUp({
+            embeds: [{
+                title: `RPG Profile - ${this.userID}`,
+                fields: [
+                    { name: 'Character', value: data.character, inline: true },
+                    { name: 'Class', value: data.class, inline: true },
+                    { name: 'Appearance', value: data.appearance, inline: false },
+                    { name: 'Backstory', value: data.backstory, inline: false },
+                    { name: 'Level', value: `${data.stats.level}`, inline: true },
+                    { name: 'Experience', value: `${data.stats.experience}`, inline: true },
+                    { name: 'Health', value: `${data.stats.health}`, inline: true },
+                    { name: 'Mana', value: `${data.stats.mana}`, inline: true },
+                    { name: 'Stamina', value: `${data.stats.stamina}`, inline: true },
+                    { name: 'Strength', value: `${data.stats.strength}`, inline: true },
+                    { name: 'Magic', value: `${data.stats.magic}`, inline: true },
+                    { name: 'Inventory', value: data.inventory.join('\n') || 'Empty', inline: true },
+                    { name: 'Skills', value: data.skills.join('\n') || 'None', inline: true },
+                    { name: 'Pets', value: data.pets.join('\n') || 'None', inline: true },
+                    { name: 'Unlocked Characters', value: data.unlocked_characters.join('\n') || 'None', inline: false }
+                ]
+            }]
+        });
     }
 }
 
