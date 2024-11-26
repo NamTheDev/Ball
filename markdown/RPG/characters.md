@@ -1,5 +1,3 @@
-# RPG Documentation
-
 ## Characters
 
 ### Warrior
@@ -25,8 +23,6 @@
 - **Advantages**: High physical damage.
 - **Disadvantages**: Vulnerable to magic damage.
 
----
-
 ### Assassin
 
 **Character**: **Ylang**
@@ -49,8 +45,6 @@
 
 - **Advantages**: High critical strike chance.
 - **Disadvantages**: Low health and defense.
-
----
 
 ### Mage
 
@@ -75,8 +69,6 @@
 - **Advantages**: High magic damage.
 - **Disadvantages**: Vulnerable to physical damage and low health.
 
----
-
 ### Rogue
 
 **Character**: **Hector**
@@ -99,8 +91,6 @@
 
 - **Advantages**: High agility and evasion.
 - **Disadvantages**: Vulnerable to magic damage.
-
----
 
 ### Thief
 
@@ -125,8 +115,6 @@
 - **Advantages**: High agility and stealth.
 - **Disadvantages**: Vulnerable to physical damage in combat.
 
----
-
 ### Alchemist
 
 **Character**: **Lauren**
@@ -149,8 +137,6 @@
 
 - **Advantages**: Ability to create powerful potions.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
-
----
 
 ### Priest
 
@@ -175,8 +161,6 @@
 - **Advantages**: High healing and support capabilities.
 - **Disadvantages**: Vulnerable to physical damage in combat.
 
----
-
 ### Healer
 
 **Character**: **Milton**
@@ -199,8 +183,6 @@
 
 - **Advantages**: High healing and support capabilities.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
-
----
 
 ### Necromancer
 
@@ -225,8 +207,6 @@
 - **Advantages**: Ability to summon and control undead minions.
 - **Disadvantages**: Vulnerable to physical damage and limited health.
 
----
-
 ### Engineer
 
 **Character**: **William**
@@ -250,8 +230,6 @@
 - **Advantages**: Ability to create and repair complex devices.
 - **Disadvantages**: Vulnerable to magic damage and limited combat capabilities.
 
----
-
 ### Juggernaut
 
 **Character**: **Lieutenant**
@@ -274,64 +252,3 @@
 
 - **Advantages**: High health and defense.
 - **Disadvantages**: Low agility and vulnerable to magic damage.
-
----
-
-## Economy
-
-### Currencies
-
-- **Gold**: Used to buy weapons and armors.
-- **Silver**: Used to buy potions.
-- **Bronze**: Used to buy pets.
-
-### Shop
-
-#### Weapons
-
-| Weapon       | Price (Gold) |
-|--------------|--------------|
-| Holy Sword   | 500          |
-| Sickle       | 100          |
-| Chainsword   | 50           |
-| Longsword    | 20           |
-| Sword        | 10           |
-| Dagger       | 5            |
-
-#### Armors
-
-| Armor            | Price (Gold) |
-|------------------|--------------|
-| Holy Armor       | 500          |
-| Mithril Armor    | 100          |
-| Juggernaut Armor | 50           |
-| Semi-Heavy Armor | 20           |
-| Chainmail Armor  | 10           |
-| Leather Armor    | 5            |
-
-#### Potions
-
-| Potion          | Price (Silver) |
-|-----------------|----------------|
-| Health Potion   | 10             |
-| Mana Potion     | 10             |
-| Stamina Potion  | 10             |
-| Poison Potion   | 10             |
-
-#### Pets
-
-| Pet           | Price (Bronze) |
-|---------------|----------------|
-| Dragon        | 1000           |
-| White Wolf    | 500            |
-| Wolf          | 200            |
-| Great Eagle   | 100            |
-| Eagle         | 50             |
-| Mithril Snake | 10             |
-| Snake         | 5              |
-
----
-
-## Biomes
-
-*Content to be added.*

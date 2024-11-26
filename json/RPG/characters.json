@@ -1,0 +1,299 @@
+[
+    {
+        "name": "Adrian",
+        "class": "Warrior",
+        "skills": [
+            {
+                "name": "Battle Cry",
+                "cooldown": 60,
+                "description": "Increases damage dealt by 20% and armor by 30% for 5 seconds."
+            },
+            {
+                "name": "Whirlwind",
+                "cooldown": 30,
+                "description": "Deals 100 physical damage to all enemies within a radius of 5 meters."
+            },
+            {
+                "name": "Shield Wall",
+                "cooldown": 90,
+                "description": "Absorbs up to 500 damage and increases block chance by 50% for 10 seconds."
+            }
+        ],
+        "advantages": [
+            "High physical damage"
+        ],
+        "disadvantages": [
+            "Vulnerable to magic damage"
+        ]
+    },
+    {
+        "name": "Ylang",
+        "class": "Assassin",
+        "skills": [
+            {
+                "name": "Critical Strike",
+                "cooldown": 45,
+                "description": "Increases critical strike chance by 30% for 10 seconds."
+            },
+            {
+                "name": "Stealth",
+                "cooldown": 60,
+                "description": "Turns invisible for 15 seconds and moves 20% faster."
+            },
+            {
+                "name": "Backstab",
+                "cooldown": 20,
+                "description": "Deals 200 physical damage to a target from behind."
+            }
+        ],
+        "advantages": [
+            "High critical strike chance"
+        ],
+        "disadvantages": [
+            "Low health and defense"
+        ]
+    },
+    {
+        "name": "Alex",
+        "class": "Mage",
+        "skills": [
+            {
+                "name": "Fireball",
+                "cooldown": 30,
+                "description": "Deals 150 magic damage to all enemies within a radius of 5 meters."
+            },
+            {
+                "name": "Element Shield",
+                "cooldown": 60,
+                "description": "Absorbs up to 300 magic damage and reflects 20% of incoming damage back to enemies for 10 seconds."
+            },
+            {
+                "name": "Teleport",
+                "cooldown": 30,
+                "description": "Teleports to a targeted location within a range of 10 meters."
+            }
+        ],
+        "advantages": [
+            "High magic damage"
+        ],
+        "disadvantages": [
+            "Vulnerable to physical damage and low health"
+        ]
+    },
+    {
+        "name": "Hector",
+        "class": "Rogue",
+        "skills": [
+            {
+                "name": "Agility Boost",
+                "cooldown": 45,
+                "description": "Increases agility by 20% for 10 seconds."
+            },
+            {
+                "name": "Dodge",
+                "cooldown": 20,
+                "description": "Dodges the next 2 attacks within 10 seconds."
+            },
+            {
+                "name": "Swiftness",
+                "cooldown": 60,
+                "description": "Increases movement speed by 30% for 15 seconds."
+            }
+        ],
+        "advantages": [
+            "High agility and evasion"
+        ],
+        "disadvantages": [
+            "Vulnerable to magic damage"
+        ]
+    },
+    {
+        "name": "Stephen",
+        "class": "Thief",
+        "skills": [
+            {
+                "name": "Poison Strike",
+                "cooldown": 20,
+                "description": "Deals 100 physical damage and applies a poison effect that deals 20 damage over 5 seconds."
+            },
+            {
+                "name": "Stealth",
+                "cooldown": 60,
+                "description": "Turns invisible for 15 seconds and moves 20% faster."
+            },
+            {
+                "name": "Disarm",
+                "cooldown": 30,
+                "description": "Disarms a target, reducing their damage output by 20% for 10 seconds."
+            }
+        ],
+        "advantages": [
+            "High agility and stealth"
+        ],
+        "disadvantages": [
+            "Vulnerable to physical damage in combat"
+        ]
+    },
+    {
+        "name": "Lauren",
+        "class": "Alchemist",
+        "skills": [
+            {
+                "name": "Healing Potion",
+                "cooldown": 60,
+                "description": "Restores 200 health to the Alchemist."
+            },
+            {
+                "name": "Buff Potion",
+                "cooldown": 45,
+                "description": "Increases damage output by 20% and armor by 10% for 10 seconds."
+            },
+            {
+                "name": "Damage Over Time",
+                "cooldown": 30,
+                "description": "Applies a poison effect that deals 20 damage over 5 seconds to all enemies within a radius of 3 meters."
+            }
+        ],
+        "advantages": [
+            "Ability to create powerful potions"
+        ],
+        "disadvantages": [
+            "Vulnerable to magic damage and limited combat capabilities"
+        ]
+    },
+    {
+        "name": "Angel",
+        "class": "Priest",
+        "skills": [
+            {
+                "name": "Healing Wave",
+                "cooldown": 60,
+                "description": "Restores 150 health to all allies within a radius of 5 meters."
+            },
+            {
+                "name": "Shield of Light",
+                "cooldown": 90,
+                "description": "Absorbs up to 300 damage and increases block chance by 20% for 10 seconds."
+            },
+            {
+                "name": "Holy Bolts",
+                "cooldown": 30,
+                "description": "Deals 100 magic damage to a target and silences them for 5 seconds."
+            }
+        ],
+        "advantages": [
+            "High healing and support capabilities"
+        ],
+        "disadvantages": [
+            "Vulnerable to physical damage in combat"
+        ]
+    },
+    {
+        "name": "Milton",
+        "class": "Healer",
+        "skills": [
+            {
+                "name": "Healing Hands",
+                "cooldown": 20,
+                "description": "Restores 100 health to a target ally."
+            },
+            {
+                "name": "Cleansing Aura",
+                "cooldown": 60,
+                "description": "Removes all negative effects from all allies within a radius of 5 meters."
+            },
+            {
+                "name": "Resurrection",
+                "cooldown": 180,
+                "description": "Revives a dead ally with 50% health."
+            }
+        ],
+        "advantages": [
+            "High healing and support capabilities"
+        ],
+        "disadvantages": [
+            "Vulnerable to magic damage and limited combat capabilities"
+        ]
+    },
+    {
+        "name": "Xeno",
+        "class": "Necromancer",
+        "skills": [
+            {
+                "name": "Summon Skeleton",
+                "cooldown": 60,
+                "description": "Summons a skeleton that deals 50 physical damage to enemies within a radius of 3 meters for 10 seconds."
+            },
+            {
+                "name": "Drain Life",
+                "cooldown": 30,
+                "description": "Drains 20 health from all enemies within a radius of 3 meters and heals the Necromancer for 10 health."
+            },
+            {
+                "name": "Curse of Death",
+                "cooldown": 45,
+                "description": "Deals 100 magic damage to a target and reduces their damage output by 20% for 10 seconds."
+            }
+        ],
+        "advantages": [
+            "Ability to summon and control undead minions"
+        ],
+        "disadvantages": [
+            "Vulnerable to physical damage and limited health"
+        ]
+    },
+    {
+        "name": "William",
+        "class": "Engineer",
+        "skills": [
+            {
+                "name": "Diving Bomb",
+                "cooldown": 30,
+                "description": "Deals 100 physical damage to all enemies within a radius of 3 meters and stuns them for 2 seconds."
+            },
+            {
+                "name": "Deploy Turret",
+                "cooldown": 60,
+                "description": "Deploys a turret that deals 50 physical damage to enemies within a radius of 3 meters for 10 seconds."
+            },
+            {
+                "name": "Rocket Jump",
+                "cooldown": 45,
+                "description": "Launches the Engineer 10 meters in the air, dealing 20 physical damage to enemies within a radius of 3 meters."
+            }
+        ],
+        "advantages": [
+            "Ability to create and repair complex devices"
+        ],
+        "disadvantages": [
+            "Vulnerable to magic damage and limited combat capabilities"
+        ]
+    },
+    {
+        "name": "Lieutenant",
+        "class": "Juggernaut",
+        "skills": [
+            {
+                "name": "Fortify",
+                "cooldown": 60,
+                "description": "Increases armor by 50% and block chance by 30% for 10 seconds."
+            },
+            {
+                "name": "Smash",
+                "cooldown": 30,
+                "description": "Deals 150 physical damage to all enemies within a radius of 3 meters and stuns them for 2 seconds."
+            },
+            {
+                "name": "Unstoppable",
+                "cooldown": 90,
+                "description": "Increases movement speed by 20% and makes the Juggernaut immune to crowd control effects for 10 seconds."
+            }
+        ],
+        "advantages": [
+            "High health and defense"
+        ],
+        "disadvantages": [
+            "Low agility and vulnerable to magic damage"
+        ]
+    }
+]

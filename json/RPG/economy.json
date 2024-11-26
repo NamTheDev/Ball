@@ -1,0 +1,155 @@
+{
+    "currencies": {
+        "Gold": "Used to buy weapons and armors.",
+        "Silver": "Used to buy potions.",
+        "Bronze": "Used to buy pets."
+    },
+    "shop": {
+        "Weapons": [
+            {
+                "name": "Holy Sword",
+                "price": {
+                    "Gold": 500
+                }
+            },
+            {
+                "name": "Sickle",
+                "price": {
+                    "Gold": 100
+                }
+            },
+            {
+                "name": "Chainsword",
+                "price": {
+                    "Gold": 50
+                }
+            },
+            {
+                "name": "Longsword",
+                "price": {
+                    "Gold": 20
+                }
+            },
+            {
+                "name": "Sword",
+                "price": {
+                    "Gold": 10
+                }
+            },
+            {
+                "name": "Dagger",
+                "price": {
+                    "Gold": 5
+                }
+            }
+        ],
+        "Armors": [
+            {
+                "name": "Holy Armor",
+                "price": {
+                    "Gold": 500
+                }
+            },
+            {
+                "name": "Mithril Armor",
+                "price": {
+                    "Gold": 100
+                }
+            },
+            {
+                "name": "Juggernaut Armor",
+                "price": {
+                    "Gold": 50
+                }
+            },
+            {
+                "name": "Semi-Heavy Armor",
+                "price": {
+                    "Gold": 20
+                }
+            },
+            {
+                "name": "Chainmail Armor",
+                "price": {
+                    "Gold": 10
+                }
+            },
+            {
+                "name": "Leather Armor",
+                "price": {
+                    "Gold": 5
+                }
+            }
+        ],
+        "Potions": [
+            {
+                "name": "Health Potion",
+                "price": {
+                    "Silver": 10
+                }
+            },
+            {
+                "name": "Mana Potion",
+                "price": {
+                    "Silver": 10
+                }
+            },
+            {
+                "name": "Stamina Potion",
+                "price": {
+                    "Silver": 10
+                }
+            },
+            {
+                "name": "Poison Potion",
+                "price": {
+                    "Silver": 10
+                }
+            }
+        ],
+        "Pets": [
+            {
+                "name": "Dragon",
+                "price": {
+                    "Bronze": 1000
+                }
+            },
+            {
+                "name": "White Wolf",
+                "price": {
+                    "Bronze": 500
+                }
+            },
+            {
+                "name": "Wolf",
+                "price": {
+                    "Bronze": 200
+                }
+            },
+            {
+                "name": "Great Eagle",
+                "price": {
+                    "Bronze": 100
+                }
+            },
+            {
+                "name": "Eagle",
+                "price": {
+                    "Bronze": 50
+                }
+            },
+            {
+                "name": "Mithril Snake",
+                "price": {
+                    "Bronze": 10
+                }
+            },
+            {
+                "name": "Snake",
+                "price": {
+                    "Bronze": 5
+                }
+            }
+        ]
+    }
+}
