@@ -34,7 +34,7 @@ export class RPGSystem {
         const characterAndClass = character.split(' ');
         const characterName = characterAndClass[0];
         const className = characterAndClass[1].replace(/[()]/g, "");
-        const { stats } = characters.find(({ name }) => name === characterName) || {};
+        const stats = characters.find(({ name }) => name === characterName)?.stats
 
         const generatedData = await GroqClient.chat(
             `Character: ${characterName}.\n` +
