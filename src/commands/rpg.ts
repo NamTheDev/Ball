@@ -330,7 +330,7 @@ const command: ChatInputApplicationCommandStructure = {
         const focusedValue = focusedOption.value.toLowerCase();
 
         const filteredNames = names.filter((name) =>
-            !focusedValue ? true : name.toLowerCase().startsWith(focusedValue)
+            !focusedValue ? true : name.toLowerCase().startsWith(focusedValue) || name.toLowerCase().includes(focusedValue);
         );
 
         await interaction.respond(
