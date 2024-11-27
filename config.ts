@@ -5,7 +5,7 @@ export default {
 
     //Groq
     GROQ_API_KEY: Bun.env.GROQ_API_KEY,
-    GROQ_MODEL: 'llama-3.2-90b-text-preview',
+    GROQ_MODEL: 'llama-3.1-70b-versatile',
     OTHER_GROQ_MODELS: [
         "gemma2-9b-it",
         "gemma-7b-it",
