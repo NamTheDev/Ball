@@ -1,7 +1,8 @@
 read:
 - .aider.conf.yml
+editor: vim.bat
 chat-mode: architect
-model: groq/llama-3.2-90b-text-preview
+model: mistral/mistral-large-2402
 yes-always: true
 dark-mode: true
 show-model-warnings: false
